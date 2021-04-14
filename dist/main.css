@@ -1,0 +1,16 @@
+body {
+  background: #e7d6d6;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
+
+@keyframes test {
+  100% {
+    margin: 10px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map*/
