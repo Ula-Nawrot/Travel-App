@@ -1,82 +1,134 @@
 $colorMain: white;
-$btn: #00B469;
+$btn: #00b469;
+$background: rgb(71, 180, 253);
 
 :root {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 body {
-    background: rgb(255, 255, 255);
-    color: $colorMain;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    margin: 0;
-    
+  background: rgb(255, 255, 255);
+  color: $colorMain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  margin: 0;
 }
 
-header{
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  width: 100vw;
+  background-color: $background;
+  padding-bottom: 1rem;
+
+  .title {
+    margin: 2rem 0 2rem 0;
+    font-size: 2.8rem;
+  }
+
+  input {
+    border-radius: 0.2rem;
+    border: none;
+    padding: 0.5rem;
+    height: 1.4rem;
+    font-size: 1.05rem;
+    outline: none;
+  }
+  label {
+    padding: 0 0.5rem 0 1rem;
+    font-size: 1.2rem;
+  }
+  select {
+    border: none;
+    border-radius: 0.2rem;
+    font-size: 1.05rem;
+    padding: 0.5rem;
+    outline: none;
+  }
+  select::after {
+    background-color: blueviolet;
+  }
+
+  .search__btn {
+    margin: 0.8rem 0 0.8rem 0;
+    font-size: 1rem;
+    width: 10rem;
+    font-weight: bold;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
-    width: 100vw;
-    background-color: rgb(71, 180, 253);
-    padding-bottom: 1rem;
+    border-radius: 1rem;
+    border: none;
+    padding: 0.5rem;
+    background-color: $btn;
+    color: $colorMain;
+    box-shadow: 4px 4px 10px 0px rgba(119, 119, 119, 0.75);
+    outline: none;
 
-    .title {
-        margin: 2rem 0 2rem 0;
-        font-size: 2.8rem;
+    img {
+      width: 1rem;
+      margin-left: 0.7rem;
     }
+  }
+  .search__btn:hover {
+    box-shadow: none;
+  }
+}
 
-    input {
-        border-radius: 0.2rem;
-        border: none;
-        padding: 0.5rem;
-        height: 1.4rem;
-        font-size: 1.05rem;
-        outline: none;
-    }
-    label {
-        padding: 0 0.5rem 0 1rem;
-        font-size: 1.2rem;
-    }
-    select {
-        border: none;
-        border-radius: 0.2rem;
-        font-size: 1.05rem;
-        padding: 0.5rem;
-        outline: none;
-    }
-    select::after{
-        background-color: blueviolet;
-    }
+.recommendations {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title_2{
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
     
+  }
+  .countries {
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    flex-wrap: wrap;
 
-    .search__btn{
-        margin: 0.8rem 0 0.8rem 0;
-        font-size: 1rem;
-        width: 10rem;
-        font-weight: bold;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .country {
+        width: 250px;
+        height: 200px;
+        background-color: $background;
+        margin: 1rem;
         border-radius: 1rem;
-        border: none;
-        padding: 0.5rem;
-        background-color: $btn;
-        color: $colorMain;
-        box-shadow: 4px 4px 10px 0px rgba(119, 119, 119, 0.75);
-        outline: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
 
-        img {
-            width: 1rem;
-            margin-left: 0.7rem;
+        p {
+            font-size: 1rem;
+            text-align: center;
+            color: $colorMain;
+            //background-color: chartreuse;
+            background-image: linear-gradient(to bottom, rgba(113,113,113,0.1), rgba(46,46,46,0.9));
+            margin: 0;
+            padding: 1.5rem 0;
+            border-radius: 0 0 1rem 1rem;
         }
     }
-    .search__btn:hover{
-        box-shadow: none;
-    }
-} 
+  }
+
+  
+}
