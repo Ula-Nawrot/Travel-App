@@ -9,22 +9,74 @@
     <link href="main.css" rel="stylesheet"></head>
     <body>
         <div class="container">
-            <!-- <img class="search__icon" src = "./img/icon_search.svg" alt="Search Icon"/> -->
-            <object type="image/svg+xml" data="./images/icon_search.svg" width="300" height="300">search </object>
-            <!-- <object data="assets/twitter-wrap.svg" type="image/svg+xml"></object> -->
             <header class="header">
+                <p class="title">Hotels from all over Europe</p>
                 <form class="search">
                     <input
                       type="text"
                       class="search__field"
                       placeholder="Cities in Europe"
                     />
+                    <label for="from">From</label>
+                    <input
+                      type="date"
+                      class="search__date_from"
+                      id="from"
+                    />
+                    <label for="to">To</label>
+                    <input
+                      type="date"
+                      class="search__date_to"
+                      placeholder="to"
+                    />
+                    <label for="No. of people">No. of people</label>
+                    <select id="people" name="number">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <!-- <input
+                      type="text"
+                      class="search__people"
+                      id="No. of people"
+                    /> -->
                 </form>
                 <button class="btn search__btn">
-                    <img src="./images/icon_search.svg" alt="image"/>
                     <span>Search</span>
+                    <img src="./images/white_search_icon.svg" alt="image"/>
                   </button>
-                </header>
+            </header>
+            
+            <div class="recommendations">
+                <p class="title_2">Recommended Countries</p>
+                <div class="countries">
+                    <div class="country">
+                        <img src="./images/cochem_germany.png" />
+                        <p>Country</p>
+                    </div>
+                    <div class="country">
+                        <img/>
+                        <p>Country</p>
+                    </div>
+                    <div class="country">
+                        <img/>
+                        <p>Country</p>
+                    </div>
+                    <div class="country">
+                        <img/>
+                        <p>Country</p>
+                    </div>
+                    <div class="country">
+                        <img/>
+                        <p>Country</p>
+                    </div>
+                    <div class="country">
+                        <img/>
+                        <p>Country</p>
+                    </div>
+                </div>
+            </div>
         </div>
     <script src="bundle.min.js"></script></body>
 </html>

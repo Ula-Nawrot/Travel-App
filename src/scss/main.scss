@@ -1,4 +1,5 @@
 $colorMain: white;
+$colorTextBlack:#4B4949;
 $btn: #00b469;
 $background: rgb(71, 180, 253);
 
@@ -8,7 +9,7 @@ $background: rgb(71, 180, 253);
 
 body {
   background: rgb(255, 255, 255);
-  color: $colorMain;
+  color: $colorTextBlack;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +31,10 @@ header {
   align-items: center;
   font-size: 1rem;
   width: 100vw;
-  background-color: $background;
+  background-image: url(../images/barcelona_1.png);
+  background-size:cover;
+  background-repeat: no-repeat;
+  //background-color: $background;
   padding-bottom: 1rem;
 
   .title {
@@ -88,7 +92,7 @@ header {
 }
 
 .recommendations {
-  color: black;
+  color: $colorTextBlack;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -108,24 +112,32 @@ header {
     flex-wrap: wrap;
 
     .country {
-        width: 250px;
+        width: 300px;
         height: 200px;
-        background-color: $background;
         margin: 1rem;
-        border-radius: 1rem;
+        
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+
+        img {
+            position: absolute;
+            border-radius: 1rem;
+            width: 300px;
+            
+        }
 
         p {
             font-size: 1rem;
             text-align: center;
             color: $colorMain;
+            font-weight: bold;
             //background-color: chartreuse;
-            background-image: linear-gradient(to bottom, rgba(113,113,113,0.1), rgba(46,46,46,0.9));
+            background-image: linear-gradient(to bottom, rgba(113,113,113,0.2), rgba(46,46,46,0.9));
             margin: 0;
             padding: 1.5rem 0;
             border-radius: 0 0 1rem 1rem;
+            z-index: 1;
         }
     }
   }
