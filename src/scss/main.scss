@@ -4,7 +4,7 @@ $btn: #00b469;
 $background: rgb(71, 180, 253);
 
 :root {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 body {
@@ -15,6 +15,7 @@ body {
   align-items: center;
   font-size: 3rem;
   margin: 0;
+  font-family: 'Lato', sans-serif;
   @media (max-width: 320px) { 
     display: none;
 }
@@ -85,6 +86,15 @@ header {
         
     }
   }
+  .search__date_from, .search__date_to{
+    width: 150px;
+    padding-left: 10px;
+    //padding: 0 0.3em;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+    
+  }
   label {
     padding: 0.5rem;
     font-size: 1.2rem;
@@ -100,7 +110,7 @@ header {
     font-size: 1.05rem;
     padding: 0.5rem;
     outline: none;
-    height: 38px;
+    height: 34px;
     @media (max-width: 960px) { 
         margin-bottom: 1rem;
     }
