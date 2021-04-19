@@ -1,0 +1,138 @@
+/////Page 1////////
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    width: 100vw;
+    background-image: url(../images/barcelona_1.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding-bottom: 1rem;
+    
+  
+    .title {
+      margin: 2rem 0 2rem 0;
+      font-size: 2.8rem;
+      @media (max-width: 768px) { 
+          font-size: 2.3rem;
+      } 
+      @media (max-width: 576px) { 
+          font-size: 1.8rem;
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: row;
+      margin: 0 1rem;
+      @media (max-width: 960px) { 
+          display: flex;
+          flex-wrap: wrap;
+          width: 485px; 
+      } 
+      @media (max-width: 576px) { 
+          display: flex;
+          flex-direction: column;
+          width: 60%;
+      } 
+    }
+    .input_fiels {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;  
+    }
+    input {
+      //border-radius: 0.2rem;
+      border: none;
+      padding: 0.5rem;
+      height: 1.4rem;
+      font-size: 1.05rem;
+      outline: none;
+      @media (max-width: 960px) { 
+          margin-bottom: 1rem;
+      } 
+      @media (max-width: 576px) { 
+          
+      }
+    }
+    .search__date_from, .search__date_to{
+      width: 150px;
+      padding-left: 10px;
+      //padding: 0 0.3em;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.2rem;
+      
+    }
+    label {
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      background-color: rgb(255, 255, 255, 0.5);
+      margin-left: 1rem;
+      @media (max-width: 960px) { 
+          margin-left: 0rem;
+          margin-bottom: 1rem;
+      } 
+    }
+    select {
+      border: none;
+      font-size: 1.05rem;
+      padding: 0.5rem;
+      outline: none;
+      height: 34px;
+      @media (max-width: 960px) { 
+          margin-bottom: 1rem;
+      }
+    }
+    select::after {
+      background-color: blueviolet;
+    }
+  
+    .search__btn {
+      margin: 0.8rem 0 0.8rem 0;
+      font-size: 1rem;
+      width: 10rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1rem;
+      border: none;
+      padding: 0.5rem;
+      background-color: $btn;
+      color: $colorMain;
+      box-shadow: 4px 4px 10px 0px rgba(119, 119, 119, 0.75);
+      outline: none;
+  
+      img {
+        width: 1rem;
+        margin-left: 0.7rem;
+      }
+    }
+    .search__btn:hover {
+      box-shadow: none;
+    }
+  }
+  
+  ////////////Page 2////////////////
+  .arrow_back{
+    width: 100vw;
+    display: flex;
+    flex-direction: row-reverse;
+    img{
+      padding: 1rem 1rem 0 0 ;
+    }
+  }
+  
+  .search{
+    padding-bottom: 2rem;
+    font-size: 8px;
+    
+    .search__people{
+      width: 2rem;
+      padding-left: 0;
+      text-align: center;
+    }
+  }

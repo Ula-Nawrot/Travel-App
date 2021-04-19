@@ -1,0 +1,32 @@
+$colorMain: white;
+$colorTextBlack:#4B4949;
+$colorBox:#adadad;
+$btn: #00b469;
+$background: rgb(71, 180, 253);
+
+:root {
+  font-size: 14px;
+  
+}
+
+body {
+    background: rgb(255, 255, 255);
+    color: $colorTextBlack;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+    @media (max-width: 320px) { 
+      display: none;
+  }
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
