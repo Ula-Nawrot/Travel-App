@@ -12,6 +12,7 @@ import "../images/rome_italy.jpg"
 import "../images/venice_italy.jpg"
 import "../images/photo_nav@2x.png"
 import "../images/arrow_back.svg"
+import "../images/stars_1.svg"
 
 
 //test();
