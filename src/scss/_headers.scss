@@ -87,34 +87,32 @@ header {
       }
     }
   }
-  
-  
-
-  .search__btn {
-    margin: 0.8rem 0 0.8rem 0;
-    font-size: 1rem;
-    width: 10rem;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1rem;
-    border: none;
-    padding: 0.5rem;
-    background-color: $btn;
-    color: $colorMain;
-    box-shadow: 4px 4px 10px 0px rgba(119, 119, 119, 0.75);
-    outline: none;
-
-    img {
-      width: 1rem;
-      margin-left: 0.7rem;
-    }
-  }
-  .search__btn:hover {
-    box-shadow: none;
-  }
 }
+///////////Butons style for all apges////////
+// .search__btn {
+//   margin: 0.8rem 0 0.8rem 0;
+//   font-size: 1rem;
+//   width: 10rem;
+//   font-weight: bold;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 1rem;
+//   border: none;
+//   padding: 0.5rem;
+//   background-color: $btn;
+//   color: $colorMain;
+//   box-shadow: 4px 4px 10px 0px rgba(119, 119, 119, 0.75);
+//   outline: none;
+
+//   img {
+//     width: 1rem;
+//     margin-left: 0.7rem;
+//   }
+// }
+// .search__btn:hover {
+//   box-shadow: none;
+// }
 
 ////////////Page 2////////////////
 .arrow_back {
