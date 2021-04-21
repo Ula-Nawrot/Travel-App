@@ -1,8 +1,10 @@
-$colorMain: white;
-$colorTextBlack:#4B4949;
-$colorBox:#adadad;
+@import 'mixin&extend';
+
+$MainBackgroung: white;
+$colorTextBlack: #4b4949;
+$colorBox: #adadad;
 $btn: #00b469;
-$background: #DEF4FF;
+$secondBackground: #def4ff;
 
 :root {
   font-size: 14px;
@@ -10,25 +12,21 @@ $background: #DEF4FF;
 }
 
 body {
-    background: rgb(255, 255, 255);
-    color: $colorTextBlack;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-    box-sizing: border-box;
-    @media (max-width: 320px) { 
-      display: none;
-  }
+  background: rgb(255, 255, 255);
+  color: $colorTextBlack;
+  @include centered-object;
+  font-size: 3rem;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
+  @media (max-width: 320px) {
+    display: none;
   }
   
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh; //check if this change didn't influence some view properties
-  }
+}
+
+.container {
+@include centered-object;
+  width: 100vw;
+  //height: 100vh; //check if this change didn't influence some view properties
+}

@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $background;
+  background-color: $secondBackground;
   width: 60%;
   padding-bottom: 2rem;
   border-radius: 1rem;
@@ -50,15 +50,15 @@
   }
 }
 
-  .hidden {
-    display: none;
-  }
+.hidden {
+  display: none;
+}
 
-  .overlay {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.459);
-    backdrop-filter: blur(3px);
-    z-index: 1;
-  }
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.459);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}

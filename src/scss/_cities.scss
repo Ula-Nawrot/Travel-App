@@ -43,10 +43,8 @@
     padding-left: 1.8rem;
     width: 50%;
     border-right: 2px solid $colorBox;
-    display: flex;
-    flex-direction: column;
+    @include centered-object;
     align-items: left;
-    justify-content: center;
     box-sizing: border-box;
     @media (max-width: 960px){
         padding-left: 1.4rem;
@@ -107,7 +105,7 @@
       border: none;
       padding: 0.5rem;
       background-color: $btn;
-      color: $colorMain;
+      color: $MainBackgroung;
       box-shadow: 4px 4px 10px 0px rgba(119, 119, 119, 0.75);
       outline: none;
       @media (max-width: 768px) {

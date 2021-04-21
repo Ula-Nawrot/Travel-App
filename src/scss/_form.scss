@@ -1,6 +1,6 @@
 .form {
   width: 1200px;
-  background-color: #def4ff;
+  background-color: $secondBackground;
   display: flex;
   padding: 3rem 0;
   font-size: 1rem;
@@ -106,7 +106,7 @@
         margin: 0;
         margin-left: 10px;
         padding: 8px 0;
-        background-color: $colorMain;
+        background-color: $MainBackgroung;
         border: 1px solid rgb(194, 194, 194);
         border-radius: 10px;
         text-align: center;
