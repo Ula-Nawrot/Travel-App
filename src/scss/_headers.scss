@@ -1,6 +1,5 @@
 /////Page 1////////
 
-
 header {
   @include centered-object;
   font-size: 1rem;
@@ -39,7 +38,7 @@ header {
   .input_fiels {
     @include centered-object;
     flex-direction: row;
-    
+
     input {
       border: none;
       padding: 0.5rem;
@@ -84,7 +83,6 @@ header {
   }
 }
 
-
 ////////////Page 2////////////////
 .arrow_back {
   width: 100vw;
@@ -105,30 +103,11 @@ header {
     text-align: center;
   }
 }
-///////////Butons style for all apges////////
-
 
 .search__btn {
-  margin: 0.8rem 0 0.8rem 0;
-  font-size: 1rem;
-  width: 10rem;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1rem;
-  border: none;
-  padding: 0.5rem;
-  background-color: $btn;
-  color: $MainBackgroung;
-  box-shadow: 4px 4px 10px 0px rgba(119, 119, 119, 0.75);
-  outline: none;
-
+  @extend .btn;
   img {
     width: 1rem;
     margin-left: 0.7rem;
   }
-}
-.search__btn:hover {
-  box-shadow: none;
 }

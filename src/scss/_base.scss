@@ -1,14 +1,14 @@
-@import 'mixin&extend';
+@import "mixin&extend";
 
-$MainBackgroung: white;
+$mainBackgroung: white;
 $colorTextBlack: #4b4949;
+$colorTextWhite: #ffffff;
 $colorBox: #adadad;
 $btn: #00b469;
 $secondBackground: #def4ff;
 
 :root {
   font-size: 14px;
-  
 }
 
 body {
@@ -22,11 +22,32 @@ body {
   @media (max-width: 320px) {
     display: none;
   }
-  
 }
 
 .container {
-@include centered-object;
+  @include centered-object;
   width: 100vw;
   //height: 100vh; //check if this change didn't influence some view properties
+}
+
+///////////Butons style for all pages////////
+.btn {
+  margin: 0.8rem 0 0.8rem 0;
+  font-size: 1rem;
+  width: 10rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  background-color: $btn;
+  color: $mainBackgroung;
+  box-shadow: 4px 4px 10px 0px rgba(119, 119, 119, 0.75);
+  outline: none;
+
+  &:hover {
+    box-shadow: none;
+  }
 }
