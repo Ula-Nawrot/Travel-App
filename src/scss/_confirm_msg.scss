@@ -1,0 +1,64 @@
+/*MODAL WINDOW*/
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $background;
+  width: 60%;
+  padding-bottom: 2rem;
+  border-radius: 1rem;
+  z-index: 2;
+  @media (max-width: 1200px) {
+    width: 80%;
+  }
+  .close-modal {
+    //position: absolute;
+    width: 100%;
+    text-align: right;
+    padding-right: 1rem;
+    font-size: 3rem;
+    color: $colorTextBlack;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  img {
+    border-radius: 1rem;
+    width: 30%;
+    margin-top: 1rem;
+    @media (max-width: 768px) {
+      width: 50%;
+    }
+  }
+
+  .message {
+    font-size: 2rem;
+    text-align: center;
+    line-height: 150%;
+    color: $colorTextBlack;
+    @media (max-width: 768px) {
+      font-size: 1.6rem;
+    }
+    @media (max-width: 576px) {
+      font-size: 1.2rem;
+    }
+    @media (max-width: 476px) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+  .hidden {
+    display: none;
+  }
+
+  .overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.459);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }

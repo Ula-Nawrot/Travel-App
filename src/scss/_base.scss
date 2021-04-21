@@ -2,7 +2,7 @@ $colorMain: white;
 $colorTextBlack:#4B4949;
 $colorBox:#adadad;
 $btn: #00b469;
-$background: rgb(71, 180, 253);
+$background: #DEF4FF;
 
 :root {
   font-size: 14px;
@@ -30,4 +30,5 @@ body {
     justify-content: center;
     align-items: center;
     width: 100vw;
+    height: 100vh; //check if this change didn't influence some view properties
   }
