@@ -1,20 +1,18 @@
-/*MODAL WINDOW*/
-
+.thanks_msg {
+  @extend .container;
+  height: 100vh;
+}
 .modal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include centered-object;
   background-color: $secondBackground;
   width: 60%;
   padding-bottom: 2rem;
-  border-radius: 1rem;
+  border-radius: $imgBorderRadius;
   z-index: 2;
   @media (max-width: 1200px) {
     width: 80%;
   }
   .close-modal {
-    //position: absolute;
     width: 100%;
     text-align: right;
     padding-right: 1rem;
@@ -25,7 +23,7 @@
     background: none;
   }
   img {
-    border-radius: 1rem;
+    border-radius: $imgBorderRadius;
     width: 30%;
     margin-top: 1rem;
     @media (max-width: 768px) {

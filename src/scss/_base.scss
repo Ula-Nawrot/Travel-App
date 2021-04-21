@@ -1,20 +1,23 @@
 @import "mixin&extend";
 
-$mainBackgroung: white;
+$mainBackgroung: rgb(255, 255, 255);
+$secondBackground: #def4ff;
+$thirdBackground: rgb(236, 249, 255);
 $colorTextBlack: #4b4949;
 $colorTextWhite: #ffffff;
 $colorBox: #adadad;
 $btn: #00b469;
-$secondBackground: #def4ff;
+$imgBorderRadius: 14px;
+$btnBorderRadius: 18px;
 
 :root {
   font-size: 14px;
 }
 
 body {
-  background: rgb(255, 255, 255);
-  color: $colorTextBlack;
   @include centered-object;
+  background: $mainBackgroung;
+  color: $colorTextBlack;
   font-size: 3rem;
   margin: 0;
   font-family: "Lato", sans-serif;
@@ -27,7 +30,6 @@ body {
 .container {
   @include centered-object;
   width: 100vw;
-  //height: 100vh; //check if this change didn't influence some view properties
 }
 
 ///////////Butons style for all pages////////
@@ -39,7 +41,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 1rem;
+  border-radius: $btnBorderRadius;
   border: none;
   padding: 0.5rem;
   background-color: $btn;

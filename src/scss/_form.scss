@@ -1,7 +1,7 @@
 .form {
+  display: flex;
   width: 1200px;
   background-color: $secondBackground;
-  display: flex;
   padding: 3rem 0;
   font-size: 1rem;
   margin: 3rem 0;
@@ -16,24 +16,22 @@
     width: 100%;
   }
   @media (max-width: 576px) {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
   }
 }
 
 .images {
   width: 45%;
   @media (max-width: 576px) {
-    margin: 0 5%;
+    @include flex-column;
     width: 90%;
-    display: flex;
-    flex-direction: column;
+    margin: 0 5%;
   }
 
   img {
     width: 90%;
     margin: 0 5%;
-    border-radius: 10px;
+    border-radius: $btnBorderRadius;
     @media (max-width: 576px) {
       width: 70%;
       margin: 0;
@@ -46,7 +44,7 @@
     width: 90%;
     margin: 0 5%;
     margin-top: 1rem;
-    border-radius: 10px;
+    border-radius: $btnBorderRadius;
     background-color: blanchedalmond;
     @media (max-width: 960px) {
       height: 200px;
@@ -75,8 +73,7 @@
     width: 80px;
   }
   .two_columns {
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     p {
       width: 40%;
       @media (max-width: 576px) {
@@ -132,11 +129,8 @@
   }
 
   .booking {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include centered-object;
     padding-top: 1.5rem;
+    width: 100%;
   }
 }

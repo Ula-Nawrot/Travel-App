@@ -1,62 +1,57 @@
-
-
 .recommendations {
-    color: $colorTextBlack;
-    @include centered-object;
+  @include centered-object;
+  color: $colorTextBlack;
 
-    .title_2{
-      font-size: 1.8rem;
-      margin: 1.5rem 0;
-      @media (max-width: 576px) { 
-          font-size: 1.4rem;
-      }
-      
+  .title_2 {
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
+    @media (max-width: 576px) {
+      font-size: 1.4rem;
     }
-    .countries {
-      width: 80vw;
-      @include centered-object;
-      flex-direction: row; 
-      flex-wrap: wrap;
-      @media (max-width: 576px) { 
-          width: 100%;
-      }
-      
-  
-      .country {
-          width: 300px;
-          height: 200px;
-          margin: 1rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          @media (max-width: 576px) { 
-              width: 280px;
-          }
-          
-          img {
-              position: absolute;
-              border-radius: 1rem;
-              width: 300px;
-              @media (max-width: 576px) { 
-                  width: 280px;
-              }
-              
-          }
-  
-          p {
-              font-size: 1rem;
-              text-align: center;
-              color: $mainBackgroung;
-              font-weight: bold;
-              //background-color: chartreuse;
-              background-image: linear-gradient(to bottom, rgba(113,113,113,0.2), rgba(46,46,46,0.9));
-              margin: 0;
-              padding: 1.5rem 0;
-              border-radius: 0 0 1rem 1rem;
-              z-index: 1;
-          }
-      }
-    }
-  
-    
   }
+  .countries {
+    @include centered-object;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80vw;
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+
+    .country {
+      @include flex-column;
+      width: 300px;
+      height: 200px;
+      margin: 1rem;
+      justify-content: flex-end;
+      @media (max-width: 576px) {
+        width: 280px;
+      }
+
+      img {
+        position: absolute;
+        border-radius: $imgBorderRadius;
+        width: 300px;
+        @media (max-width: 576px) {
+          width: 280px;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        text-align: center;
+        color: $mainBackgroung;
+        font-weight: bold;
+        background-image: linear-gradient(
+          to bottom,
+          rgba(113, 113, 113, 0.2),
+          rgba(46, 46, 46, 0.9)
+        );
+        margin: 0;
+        padding: 1.5rem 0;
+        border-radius: 0 0 $btnBorderRadius $btnBorderRadius;
+        z-index: 1;
+      }
+    }
+  }
+}

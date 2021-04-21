@@ -1,9 +1,8 @@
 .cities {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
+  width: 1060px;
   padding: 2rem;
   margin-bottom: 2rem;
-  width: 1060px;
   @media (max-width: 1200px) {
     width: 860px;
   }
@@ -16,49 +15,46 @@
 }
 
 .city {
-  display: flex;
-  flex-direction: row;
+  @include flex-row;
   font-size: 1rem;
-  border: 2px solid $colorBox;
-  border-radius: 1rem;
+  border-radius: $imgBorderRadius;
   margin-bottom: 2rem;
   @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
   }
 
   img {
-    border-radius: 0.9rem 0 0 0.9rem;
+    border-radius: $imgBorderRadius 0 0 $imgBorderRadius;
     width: 25%;
     @media (max-width: 768px) {
       width: 100%;
-      border-radius: 0.9rem 0.9rem 0 0;
+      border-radius: $imgBorderRadius $imgBorderRadius 0 0;
     }
   }
 
   .hotel {
+    @include flex-column;
     padding: 1rem;
     padding-left: 1.8rem;
     width: 50%;
-    border-right: 2px solid $colorBox;
-    @include centered-object;
-    align-items: left;
     box-sizing: border-box;
+    background-color: $thirdBackground;
     @media (max-width: 960px) {
       padding-left: 1.4rem;
     }
     @media (max-width: 768px) {
       width: 100%;
-      border: none;
     }
     .hotel_name {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+      font-weight: bold;
       margin: 0;
       margin-bottom: 14px;
     }
 
     img {
       width: 80px;
+      border-radius: 0;
     }
 
     ul {
@@ -82,12 +78,14 @@
 
 //////////////Button styling///////////////////
 .booking {
-  width: 25%;
   @include centered-object;
+  width: 25%;
   background-color: $secondBackground;
-  border-radius: 0 0.9rem 0.9rem 0;
+  border-radius: 0 $btnBorderRadius $btnBorderRadius 0;
   @media (max-width: 768px) {
     width: 100%;
+    border-radius: 0 0 $btnBorderRadius $btnBorderRadius;
+    padding-top: 1rem;
   }
   .price {
     font-size: 1.8rem;
