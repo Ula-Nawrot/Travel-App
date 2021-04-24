@@ -1,4 +1,4 @@
-//import {data} from 'data.js';
+//import data from './data.js'
 ///IMAGES////
 import "../scss/main.scss";
 import "../images/search_icon.png";
@@ -15,6 +15,18 @@ import "../images/photo_nav@2x.png";
 import "../images/arrow_back.svg";
 import "../images/stars_1.svg";
 import "../images/add_sign.svg";
+
+const axios = require("axios");
+const data = '';
+const myData =  axios
+  .get("https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels")
+  .then(
+      function(response){
+          console.log(response.data);
+      }
+  );
+
+  console.log(myData);
 
 //test();
 
