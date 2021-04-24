@@ -17,16 +17,47 @@ import "../images/stars_1.svg";
 import "../images/add_sign.svg";
 
 const axios = require("axios");
-const data = '';
-const myData =  axios
-  .get("https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels")
-  .then(
-      function(response){
-          console.log(response.data);
-      }
-  );
+// const data = '';
+// const myData = axios
+//   .get("https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels")
+//   .then(
+//       function(response){
+//           const b = response.data
+//       }
+//   );
 
-  console.log(myData);
+//   console.log(myData);
+
+  async function getHotel() {
+    const url = `https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels`;
+    const response = await axios.get(url);
+    return {
+      data: response.data,
+    };
+  }
+
+async function tryingGetData() {
+    try{
+        const myData = await getHotel();
+        console.log(myData.data);
+    } catch{
+
+    }
+    
+}
+
+// tab[]
+
+// function search(country) {
+//     myData.data.forEach(element => {
+//         if(element.location.country == 'country')
+//         {
+//             tab.append(element)
+//         }
+//     });
+// }
+
+tryingGetData();
 
 //test();
 
