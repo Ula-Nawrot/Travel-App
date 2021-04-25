@@ -1,4 +1,4 @@
-@import "mixin&extend";
+@import 'mixin&extend';
 
 $mainBackgroung: rgb(255, 255, 255);
 $secondBackground: #def4ff;
@@ -20,7 +20,7 @@ body {
   color: $colorTextBlack;
   font-size: 3rem;
   margin: 0;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   box-sizing: border-box;
   @media (max-width: 320px) {
     display: none;

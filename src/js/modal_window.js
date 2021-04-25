@@ -16,7 +16,6 @@
 //     overlay.classList.remove('hidden');
 // };
 
-
 // //opening modal window after clicking on a wall with a photo
 
 // btnsOpenModal[0].addEventListener('click', function (){
@@ -27,17 +26,17 @@
 // btnsOpenModal[1].addEventListener('click', function (){
 //     document.getElementById("iframeID").src = "https://www.youtube.com/embed/Az7NlYBsUp0";
 //     openModal()
-    
+
 // });
 
 // btnsOpenModal[2].addEventListener('click', function (){
-    
+
 //     document.getElementById("iframeID").src = "https://www.youtube.com/embed/-wASykNAKGU";
 //     openModal()
 // });
 
 // btnsOpenModal[3].addEventListener('click', function (){
-    
+
 //     document.getElementById("iframeID").src = "https://www.youtube.com/embed/23pCesoKEU4";
 //     openModal()
 // });

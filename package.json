@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
-    "serve": "webpack-dev-server --inline --hot"
+    "serve": "webpack-dev-server --inline --hot",
+    "format": "prettier -w --single-quote ."
   },
   "browserslist": [
     "defaults"
@@ -30,6 +31,7 @@
     "mini-css-extract-plugin": "^1.3.1",
     "postcss": "^8.1.10",
     "postcss-loader": "^4.1.0",
+    "prettier": "2.2.1",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "webpack": "^4.35.0",
