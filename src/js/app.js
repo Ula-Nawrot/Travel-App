@@ -1,4 +1,7 @@
-//import data from './data.js'
+import data from './data.js';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+import { async } from 'regenerator-runtime';
 ///IMAGES////
 import "../scss/main.scss";
 import "../images/search_icon.png";

@@ -1,15 +1,15 @@
-const axios = require("axios");
-const data
-const myData = axios
-  .get("https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels")
-  .then(
-      function(response){
-          data = response.data;
-      }
-  );
+// const axios = require("axios");
+// const data = null;
+// const myData = axios
+//   .get("https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels")
+//   .then(
+//       function(response){
+//           data = response.data;
+//       }
+//   );
 
-  console.log(myData);
-export default data;
+//   console.log(myData);
+// export default data;
 
 export const data2 = [
   {
