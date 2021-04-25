@@ -13,6 +13,8 @@ export async function getHotels(countryName) {
   };
 }
 
+
+
 // const myData = '';
 
 // async function getHotel() {
