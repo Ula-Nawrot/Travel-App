@@ -1,15 +1,29 @@
-// const axios = require("axios");
-// const data = null;
-// const myData = axios
-//   .get("https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels")
-//   .then(
-//       function(response){
-//           data = response.data;
-//       }
-//   );
+import { async } from "regenerator-runtime";
+const axios = require("axios");
 
-//   console.log(myData);
-// export default data;
+const BASE_API_URL = `https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels`;
+
+export async function getHotels(countryName) {
+  //const url = `${BASE_API_URL}?q=${countryName}&appid=${API_KEY}`;
+  const url = `${BASE_API_URL}`;
+  console.log(countryName);
+  const response = await axios.get(url);
+  return {
+    data: response.data,
+  };
+}
+
+// const myData = '';
+
+// async function getHotel() {
+//   const url = `https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels`;
+//   const response = await axios.get(url);
+//   return {
+//     data: response.data,
+//   };
+// }
+
+
 
 export const data2 = [
   {
@@ -107,18 +121,3 @@ export const data2 = [
     ],
   },
 ];
-
-// const showHotel = async function () {
-//     try{
-//         const res = await fetch('https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels');
-
-//         const data = await res.json();
-
-//         if (!res.ok) throw new Error(`${data.message} (${res.status})`)
-//         console.log(res,data);
-//     } catch (err){
-//         alert(err)
-//     }
-// };
-
-// showHotel();
