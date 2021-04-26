@@ -23,7 +23,7 @@
           <form class="search">
             <div class="input_fiels">
               <label for="from">Country</label>
-              <input type="text" class="search__field" placeholder="in Europe" />
+              <input type="text" class="search__field" placeholder="in Europe" required />
             </div>
             <div class="input_fiels">
               <label for="from">From</label>
@@ -44,37 +44,38 @@
                 <option value="4">4</option>
               </select>
             </div>
+            <button class="search__btn">
+              <span>Search</span>
+              <img src="./images/white_search_icon.svg" alt="search icon" />
+            </button>
           </form>
-          <button class="search__btn">
-            <span>Search</span>
-            <img src="./images/white_search_icon.svg" alt="search icon" />
-          </button>
+          
         </header>
   
         <div class="recommendations">
           <p class="title_2">Recommended Countries</p>
           <div class="countries">
-            <div class="country">
+            <div id="germany" class="country">
               <img src="./images/cochem_germany.jpg" />
               <p>Germany</p>
             </div>
-            <div class="country">
+            <div id="belgium" class="country">
               <img src="./images/dinant_belgium.jpg" />
               <p>Belgium</p>
             </div>
-            <div class="country">
+            <div id="austria" class="country">
               <img src="./images/hallstatt_austria.jpg" />
               <p>Austria</p>
             </div>
-            <div class="country">
+            <div id="italy" class="country">
               <img src="./images/venice_italy.jpg" />
               <p>Croatia</p>
             </div>
-            <div class="country">
+            <div id="netherland" class="country">
               <img src="./images/netherland.jpg" />
               <p>The Netherland</p>
             </div>
-            <div class="country">
+            <div id="italy" class="country">
               <img src="./images/rome_italy.jpg" />
               <p>Italy</p>
             </div>

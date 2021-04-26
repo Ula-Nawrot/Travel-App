@@ -18,13 +18,21 @@ import "../images/photo_nav@2x.png";
 import "../images/arrow_back.svg";
 import "../images/stars_1.svg";
 import "../images/add_sign.svg";
+// function importAll(r) {
+//     return r.keys().map(r);
+//   }
+
+//   const images = importAll(require.context('./', false, /\.(png|jpe?g|svg)$/));
+//https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack
+
+/////////////////////////////////////////
 
 async function getHotelsHandler() {
   try {
-    const myData = await getHotels('Polska');
+    const myData = await getHotels("Polska");
     console.log(myData.data);
   } catch (err) {
-      alert(err)
+    alert(err);
   }
 }
 
@@ -41,23 +49,52 @@ getHotelsHandler();
 //     });
 // }
 
-// function importAll(r) {
-//     return r.keys().map(r);
-//   }
-
-//   const images = importAll(require.context('./', false, /\.(png|jpe?g|svg)$/));
-//https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack
-
 ///////////////Selecting DOM elements/////////////////////
 const mainContainer = document.querySelector(".container");
 
 ///////////////////////////////////////////
+/////////////////Page 1////////////////////
+///////////////Selecting DOM elements/////////////////////
+const searchButton = document.querySelector(".search__btn");
+const inputCountry = document.querySelector(".search__field");
+const inputDateFrom = document.querySelector(".search__date_from");
+const inputDateTo = document.querySelector(".search__date_to");
+const inputPeople = document.querySelector("#people");
+const userData = {};
 
-const showPage2 = function () {
-  const x = mainContainer.removeChild(mainContainer.childNodes[1]);
-  // const markup = `Hello`;
-  // mainContainer.insertAdjacentHTML('afterbegin',markup);
-  console.log(x);
+function countryValidation() {
+  if (userData.country != "") {
+    userData.country = inputCountry.value;
+    console.log(userData);
+  } else {
+    console.log("brak kraju");
+  }
+}
+
+searchButton.addEventListener("click", function () {
+  //1. Reading input value
+
+  userData.dateFrom = inputDateFrom.value;
+  userData.dateTo = inputDateTo.value;
+  userData.noOfPeople = inputPeople.value;
+  //console.log(userData);
+
+  ifInputIsEmpty(userData.country);
+
+  //2. Reading days input value
+
+  //setAttribute("value", "2014-02-09");
+});
+
+const ifInputIsEmpty = function (element) {
+  if ((element = "")) return console.log("działa");
 };
 
-showPage2();
+const showPage2 = function () {
+  mainContainer.innerHTML = "";
+  // const markup = `Hello`;
+  // mainContainer.insertAdjacentHTML('afterbegin',markup);
+  //console.log(x);
+};
+
+//showPage2();
