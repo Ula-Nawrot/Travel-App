@@ -27,12 +27,12 @@
             </div>
             <div class="input_fiels">
               <label for="from">From</label>
-              <input type="date" class="search__date_from" id="from" />
+              <input type="date" class="search__date_from" id="from" required/>
             </div>
   
             <div class="input_fiels">
               <label for="to">To</label>
-              <input type="date" class="search__date_to" id="to" />
+              <input type="date" class="search__date_to" id="to" required />
             </div>
   
             <div class="input_fiels">
@@ -44,10 +44,13 @@
                 <option value="4">4</option>
               </select>
             </div>
-            <button class="search__btn">
-              <span>Search</span>
-              <img src="./images/white_search_icon.svg" alt="search icon" />
-            </button>
+            <div class="btn_width">
+              <button class="search__btn">
+                <span>Search</span>
+                <img src="./images/white_search_icon.svg" alt="search icon" />
+              </button>
+            </div>
+            
           </form>
           
         </header>
