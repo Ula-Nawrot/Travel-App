@@ -1,4 +1,5 @@
-import { getHotels } from "./hotels_API.js";
+import { apiAccess } from "./hotels_API.js";
+import Page2 from "./views/page2";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { async } from "regenerator-runtime";
@@ -27,16 +28,65 @@ import "../images/add_sign.svg";
 
 /////////////////////////////////////////
 
-async function getHotelsHandler() {
+// let apiAccess = new ApiAccess();
+// const polska = apiAccess.getHotels();
+// console.log(polska);
+
+async function gettingData() {
   try {
-    const myData = await getHotels("Polska");
-    console.log(myData.data);
+    const polska = await apiAccess();
+    //console.log(polska);
+    searchButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      //1. Reading input value
+      userData.country = inputCountry.value;
+      userData.dateFrom = inputDateFrom.value;
+      userData.dateTo = inputDateTo.value;
+      userData.noOfPeople = inputPeople.value;
+      console.log(userData);
+
+      let page2 = new Page2();
+      page2.render(polska);
+
+      //2. Reading days input value
+
+      //setAttribute("value", "2014-02-09");
+    });
   } catch (err) {
     alert(err);
   }
 }
 
-getHotelsHandler();
+gettingData();
+
+// let test = new Proba();
+// const kraj = test.gettingData();
+// console.log(kraj);
+
+// async function getHotelsHandler() {
+//   try {
+
+//     return await apiAccess.testMaciek2()
+//   } catch (err) {
+//     alert(err);
+//   }
+// }
+
+// console.log(getHotelsHandler())
+
+// async function getHotelsHandler() {
+//   try {
+//     const myData = await getHotels("Polska");
+//     console.log(myData.data);
+//   } catch (err) {
+//     alert(err);
+//   }
+// }
+
+// let apiAcces = new ApiAcces()
+// polska = apiAcces.getHotelsHandler()
+
+//getHotelsHandler();
 
 // tab[]
 
@@ -50,7 +100,6 @@ getHotelsHandler();
 // }
 
 ///////////////Selecting DOM elements/////////////////////
-const mainContainer = document.querySelector(".container");
 
 ///////////////////////////////////////////
 /////////////////Page 1////////////////////
@@ -71,30 +120,19 @@ function countryValidation() {
   }
 }
 
-searchButton.addEventListener("click", function () {
-  //1. Reading input value
+// searchButton.addEventListener("click", function (e) {
+//   e.preventDefault();
+//   //1. Reading input value
+//   userData.country = inputCountry.value;
+//   userData.dateFrom = inputDateFrom.value;
+//   userData.dateTo = inputDateTo.value;
+//   userData.noOfPeople = inputPeople.value;
+//   console.log(userData);
 
-  userData.dateFrom = inputDateFrom.value;
-  userData.dateTo = inputDateTo.value;
-  userData.noOfPeople = inputPeople.value;
-  //console.log(userData);
+//   let page2 = new Page2();
+//   page2.showPage();
 
-  ifInputIsEmpty(userData.country);
+//   //2. Reading days input value
 
-  //2. Reading days input value
-
-  //setAttribute("value", "2014-02-09");
-});
-
-const ifInputIsEmpty = function (element) {
-  if ((element = "")) return console.log("działa");
-};
-
-const showPage2 = function () {
-  mainContainer.innerHTML = "";
-  // const markup = `Hello`;
-  // mainContainer.insertAdjacentHTML('afterbegin',markup);
-  //console.log(x);
-};
-
-//showPage2();
+//   //setAttribute("value", "2014-02-09");
+// });
