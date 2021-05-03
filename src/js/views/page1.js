@@ -6,54 +6,65 @@ const inputPeople = document.querySelector("#people");
 export const userData = {};
 
 export default class Page1 extends View {
-  
   constructor() {
     super();
-    this.errorMessage = 'We could not find that recipe. Please try another one!';
-    
+    this.errorMessage =
+      "We could not find that recipe. Please try another one!";
+
     //console.log(this.data.Poland);
   }
-  inputData(){
-    
-    //(inputCountry.value='')?this.render(this.errorMessage):userData.country = inputCountry.value;
-    userData.country = inputCountry.value;
+  inputData() {
+      //console.log(inputCountry.value);
+    if (inputCountry.value != undefined && inputCountry.value != '' ) {
+        userData.country = inputCountry.value;
+        console.log('Udało się');
+        return true
+    } else {
+        alert('Nie udało się');
+        return false
+     
+    }
+    // (inputCountry.value != 'undefined')
+    //   ? (userData.country = inputCountry.value)
+    //   : console.log('blad');
+    //userData.country = inputCountry.value;
     userData.dateFrom = inputDateFrom.value;
     userData.dateTo = inputDateTo.value;
     userData.noOfPeople = inputPeople.value;
-    //console.log(userData);
-    return userData
+    console.log(userData);
+    return userData;
   }
-  inputRecommendedCountry(){
-      const countries = document.querySelector('.countries');
-      
-      countries.onclick = function(e){
-        e.preventDefault();
-        const countryButton = e.target.closest('.country');
-        console.log(countryButton.id);
-        switch(countryButton.id) {
-            case `germany`:
-                inputCountry.value = 'Germany';
-                break;
-            case `belgium`:
-                inputCountry.value = 'Belgium';
-                break;
-            case `austria`:
-                inputCountry.value = 'Austria';
-                break; 
-            case `italy`:
-                inputCountry.value = 'Italy';
-                break;
-            case `croatia`:
-                inputCountry.value = 'Croatia';
-                break;
-            case `netherland`:
-                inputCountry.value = 'Netherland';
-                break;
-          }
+  inputRecommendedCountry() {
+    const countries = document.querySelector(".countries");
+
+    countries.onclick = function (e) {
+      e.preventDefault();
+      const countryButton = e.target.closest(".country");
+      console.log(countryButton.id);
+      switch (countryButton.id) {
+        case `germany`:
+          inputCountry.value = "Germany";
+          break;
+        case `belgium`:
+          inputCountry.value = "Belgium";
+          break;
+        case `austria`:
+          inputCountry.value = "Austria";
+          break;
+        case `italy`:
+          inputCountry.value = "Italy";
+          break;
+        case `croatia`:
+          inputCountry.value = "Croatia";
+          break;
+        case `netherland`:
+          inputCountry.value = "Netherland";
+          break;
       }
+    };
   }
-  generateMarkup(){
-    return`<div id="page1">
+  generateMarkup() {
+    return `<div id="page1">
     <header>
       <p class="title">Hotels from all over Europe</p>
       <form class="search">
@@ -121,7 +132,5 @@ export default class Page1 extends View {
       </div>
     </div>
   </div>`;
-  } 
-  
-
+  }
 }

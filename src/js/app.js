@@ -46,13 +46,13 @@ async function gettingData() {
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
       //1. Reading input values
-      page1.inputData();
+      if(page1.inputData()) page2.render(dataApi)
       
-      page2.render(dataApi);
+      
     });
     //back to page 1
     //arrowBackPage2.addEventListener("click",page1.render(dataApi))
-    
+
     page1.inputRecommendedCountry();
   } catch (err) {
     alert(err);
