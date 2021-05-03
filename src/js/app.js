@@ -1,5 +1,6 @@
 import { apiAccess } from "./hotels_API.js";
 import Page2 from "./views/page2";
+import Page1 from "./views/page1.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { async } from "regenerator-runtime";
@@ -19,6 +20,7 @@ import "../images/photo_nav@2x.png";
 import "../images/arrow_back.svg";
 import "../images/stars_1.svg";
 import "../images/add_sign.svg";
+
 // function importAll(r) {
 //     return r.keys().map(r);
 //   }
@@ -27,31 +29,31 @@ import "../images/add_sign.svg";
 //https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack
 
 /////////////////////////////////////////
+///////////////Selecting DOM elements/////////////////////
+const searchButton = document.querySelector(".search__btn");
 
-// let apiAccess = new ApiAccess();
-// const polska = apiAccess.getHotels();
-// console.log(polska);
+
+
 
 async function gettingData() {
   try {
-    const polska = await apiAccess();
+    const dataApi = await apiAccess();
+    const userData = {};
+    const page1 = new Page1();
+    const page2 = new Page2();
+    
     //console.log(polska);
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
-      //1. Reading input value
-      userData.country = inputCountry.value;
-      userData.dateFrom = inputDateFrom.value;
-      userData.dateTo = inputDateTo.value;
-      userData.noOfPeople = inputPeople.value;
-      console.log(userData);
-
-      let page2 = new Page2();
-      page2.render(polska);
-
-      //2. Reading days input value
-
-      //setAttribute("value", "2014-02-09");
+      //1. Reading input values
+      page1.inputData();
+      
+      page2.render(dataApi);
     });
+    //back to page 1
+    //arrowBackPage2.addEventListener("click",page1.render(dataApi))
+    
+    page1.inputRecommendedCountry();
   } catch (err) {
     alert(err);
   }
@@ -59,57 +61,9 @@ async function gettingData() {
 
 gettingData();
 
-// let test = new Proba();
-// const kraj = test.gettingData();
-// console.log(kraj);
 
-// async function getHotelsHandler() {
-//   try {
 
-//     return await apiAccess.testMaciek2()
-//   } catch (err) {
-//     alert(err);
-//   }
-// }
 
-// console.log(getHotelsHandler())
-
-// async function getHotelsHandler() {
-//   try {
-//     const myData = await getHotels("Polska");
-//     console.log(myData.data);
-//   } catch (err) {
-//     alert(err);
-//   }
-// }
-
-// let apiAcces = new ApiAcces()
-// polska = apiAcces.getHotelsHandler()
-
-//getHotelsHandler();
-
-// tab[]
-
-// function search(country) {
-//     myData.data.forEach(element => {
-//         if(element.location.country == 'country')
-//         {
-//             tab.append(element)
-//         }
-//     });
-// }
-
-///////////////Selecting DOM elements/////////////////////
-
-///////////////////////////////////////////
-/////////////////Page 1////////////////////
-///////////////Selecting DOM elements/////////////////////
-const searchButton = document.querySelector(".search__btn");
-const inputCountry = document.querySelector(".search__field");
-const inputDateFrom = document.querySelector(".search__date_from");
-const inputDateTo = document.querySelector(".search__date_to");
-const inputPeople = document.querySelector("#people");
-const userData = {};
 
 function countryValidation() {
   if (userData.country != "") {
@@ -120,19 +74,4 @@ function countryValidation() {
   }
 }
 
-// searchButton.addEventListener("click", function (e) {
-//   e.preventDefault();
-//   //1. Reading input value
-//   userData.country = inputCountry.value;
-//   userData.dateFrom = inputDateFrom.value;
-//   userData.dateTo = inputDateTo.value;
-//   userData.noOfPeople = inputPeople.value;
-//   console.log(userData);
 
-//   let page2 = new Page2();
-//   page2.showPage();
-
-//   //2. Reading days input value
-
-//   //setAttribute("value", "2014-02-09");
-// });

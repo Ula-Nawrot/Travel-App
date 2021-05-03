@@ -1,5 +1,7 @@
 import View from "./View";
-const mainContainer = document.querySelector(".container");
+import {userData} from "./page1.js";
+
+const arrowBackPage2 = document.querySelector(".arrow_back_page2");
 
 
 export default class Page2 extends View {
@@ -13,22 +15,22 @@ export default class Page2 extends View {
   generateMarkup(){
     return`<div id="page2">
     <header>
-        <div class="arrow_back">
+        <div class="arrow_back_page2">
           <img src="./images/arrow_back.svg" alt="arrow back" />
         </div>
         <form class="search">
           <div class="input_fiels">
             <label for="from">Country</label>
-            <input type="text" class="search__field" value="this.userData.country" />
+            <input type="text" class="search__field" value="${userData.country}" />
           </div>
           <div class="input_fiels">
             <label for="from">From</label>
-            <input type="date" class="search__date_from" id="from" value="20.04.2021" />
+            <input type="date" class="search__date_from" id="from" value="${userData.dateFrom}" />
           </div>
   
           <div class="input_fiels">
             <label for="to">To</label>
-            <input type="date" class="search__date_to" id="to"/>
+            <input type="date" class="search__date_to" id="to" value="${userData.dateTo}"/>
           </div>
   
           <div class="input_fiels">
@@ -37,7 +39,7 @@ export default class Page2 extends View {
               type="text"
               class="search__people"
               id="No. of people"
-              value="1"
+              value="${userData.noOfPeople}"
             />
           </div>
         </form>
