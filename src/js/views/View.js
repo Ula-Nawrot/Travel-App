@@ -1,22 +1,34 @@
 const mainContainer = document.querySelector(".container");
-
+const inputDateFrom = document.querySelector(".search__date_from");
+const inputDateTo = document.querySelector(".search__date_to");
 
 export default class View {
-
   clearInput(inputName) {
     document.querySelector(`${inputName}`).value = "";
   }
-  render(data) {
-    //if (!data || (Array.isArray(data) && data.length === 0))
-     // return this.renderError();
 
+  diffBetweenDates() {
+    inputDateTo.addEventListener("change", function () {
+      const from = inputDateFrom.value;
+      const to = inputDateTo.value;
+
+      const date1 = new Date(from);
+      const date2 = new Date(to);
+
+      const differenceInTime = date2.getTime() - date1.getTime();
+
+      const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+      console.log(`Twoja wycieczka będzie trwała ${differenceInDays}`);
+    });
+  }
+  render(data) {
+    
     this.data = data.Poland;
     console.log(this.data);
     const markup = this.generateMarkup();
 
     mainContainer.innerHTML = "";
-    mainContainer.insertAdjacentHTML('afterbegin', markup);
-    
+    mainContainer.insertAdjacentHTML("afterbegin", markup);
   }
   renderError(message = this._errorMessage) {
     const markup = `
@@ -25,6 +37,6 @@ export default class View {
       </div>
     `;
     this._clear();
-    mainContainer.insertAdjacentHTML('afterbegin', markup);
+    mainContainer.insertAdjacentHTML("afterbegin", markup);
   }
 }

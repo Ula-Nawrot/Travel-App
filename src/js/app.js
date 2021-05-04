@@ -1,4 +1,5 @@
 import { apiAccess } from "./hotels_API.js";
+import {userData} from "./views/page1";
 import Page2 from "./views/page2";
 import Page1 from "./views/page1.js";
 import "core-js/stable";
@@ -41,12 +42,17 @@ async function gettingData() {
     const userData = {};
     const page1 = new Page1();
     const page2 = new Page2();
+    page1.inputDates();
+    page1.diffBetweenDates();
+    
     
     //console.log(polska);
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
       //1. Reading input values
-      if(page1.inputData()) page2.render(dataApi)
+      if(page1.inputCountryName()) page2.render(dataApi)
+      //console.log(page1.inputCountryName());
+
       
       
     });

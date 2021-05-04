@@ -10,29 +10,51 @@ export default class Page1 extends View {
     super();
     this.errorMessage =
       "We could not find that recipe. Please try another one!";
+    this.dataFrom;
+    this.dataTo;
 
     //console.log(this.data.Poland);
   }
-  inputData() {
-      //console.log(inputCountry.value);
-    if (inputCountry.value != undefined && inputCountry.value != '' ) {
-        userData.country = inputCountry.value;
-        console.log('Udało się');
-        return true
+  inputDates() {
+    const now = new Date();
+    const day = `${now.getDate()}`.padStart(2, 0);
+    const month = `${now.getMonth() + 1}`.padStart(2, 0);
+    const year = now.getFullYear();
+
+    inputDateFrom.setAttribute("min", `${year}-${month}-${day}`);
+
+    inputDateFrom.addEventListener("change", function () {
+      inputDateTo.setAttribute("min", `${inputDateFrom.value}`);
+    });
+    // if (inputDateFrom != undefined && inputDateFrom != ""){
+    //     console.log('dupa');
+    // }
+  }
+  inputCountryName() {
+    const conditionsArray = [
+      inputCountry.value != "Poland",
+      inputCountry.value != undefined,
+      inputCountry.value != "",
+    ];
+    if (conditionsArray.every((cond) => cond == true)) {
+      alert(
+        "The application is under development. The following countries are available: Poland, Germany, Austria, Belgium, Croatia, Italy."
+      );
+      return false;
+    } else if (inputCountry.value != undefined && inputCountry.value != "") {
+      userData.country = inputCountry.value;
+      userData.dateFrom = inputDateFrom.value;
+      userData.dateTo = inputDateTo.value;
+      userData.noOfPeople = inputPeople.value;
+      console.log(userData);
+
+      return true;
     } else {
-        alert('Nie udało się');
-        return false
-     
+      alert(
+        "You must select a country. Enter one of the following countries: Poland, Germany, Austria, Belgium, Croatia, Italy."
+      );
+      return false;
     }
-    // (inputCountry.value != 'undefined')
-    //   ? (userData.country = inputCountry.value)
-    //   : console.log('blad');
-    //userData.country = inputCountry.value;
-    userData.dateFrom = inputDateFrom.value;
-    userData.dateTo = inputDateTo.value;
-    userData.noOfPeople = inputPeople.value;
-    console.log(userData);
-    return userData;
   }
   inputRecommendedCountry() {
     const countries = document.querySelector(".countries");
@@ -40,7 +62,6 @@ export default class Page1 extends View {
     countries.onclick = function (e) {
       e.preventDefault();
       const countryButton = e.target.closest(".country");
-      console.log(countryButton.id);
       switch (countryButton.id) {
         case `germany`:
           inputCountry.value = "Germany";
