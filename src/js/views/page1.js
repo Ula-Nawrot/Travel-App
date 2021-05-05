@@ -26,13 +26,23 @@ export default class Page1 extends View {
     inputDateFrom.addEventListener("change", function () {
       inputDateTo.setAttribute("min", `${inputDateFrom.value}`);
     });
-    // if (inputDateFrom != undefined && inputDateFrom != ""){
-    //     console.log('dupa');
-    // }
+  }
+  validationDates() {
+    if (inputDateFrom.value == "" || inputDateTo.value == "") {
+      alert("Please select the date of your stay");
+      return false;
+    } else {
+      return true;
+    }
   }
   inputCountryName() {
     const conditionsArray = [
       inputCountry.value != "Poland",
+      inputCountry.value != "Germany",
+      inputCountry.value != "Austria",
+      inputCountry.value != "Belgium",
+      inputCountry.value != "Croatia",
+      inputCountry.value != "Italy",
       inputCountry.value != undefined,
       inputCountry.value != "",
     ];
@@ -43,6 +53,7 @@ export default class Page1 extends View {
       return false;
     } else if (inputCountry.value != undefined && inputCountry.value != "") {
       userData.country = inputCountry.value;
+
       userData.dateFrom = inputDateFrom.value;
       userData.dateTo = inputDateTo.value;
       userData.noOfPeople = inputPeople.value;
@@ -85,13 +96,14 @@ export default class Page1 extends View {
     };
   }
   generateMarkup() {
+    this.data ={};
     return `<div id="page1">
     <header>
       <p class="title">Hotels from all over Europe</p>
       <form class="search">
         <div class="input_fiels">
           <label for="from">Country</label>
-          <input type="text" class="search__field" placeholder="in Europe" required />
+          <input type="text" class="search__field" placeholder="in Europe" value="" required />
         </div>
         <div class="input_fiels">
           <label for="from">From</label>

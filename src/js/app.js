@@ -1,5 +1,5 @@
 import { apiAccess } from "./hotels_API.js";
-import {userData} from "./views/page1";
+import { userData } from "./views/page1";
 import Page2 from "./views/page2";
 import Page1 from "./views/page1.js";
 import "core-js/stable";
@@ -32,9 +32,7 @@ import "../images/add_sign.svg";
 /////////////////////////////////////////
 ///////////////Selecting DOM elements/////////////////////
 const searchButton = document.querySelector(".search__btn");
-
-
-
+const arrowBackPage2 = document.querySelector(".arrow_back_page2");
 
 async function gettingData() {
   try {
@@ -42,34 +40,39 @@ async function gettingData() {
     const userData = {};
     const page1 = new Page1();
     const page2 = new Page2();
+
+    page1.inputRecommendedCountry();
     page1.inputDates();
     page1.diffBetweenDates();
-    
-    
+
     //console.log(polska);
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
       //1. Reading input values
-      if(page1.inputCountryName()) page2.render(dataApi)
+      if (page1.inputCountryName() && page1.validationDates())
+        page2.render(dataApi);
+        //page1.arrowBack(dataApi, page1);
       //console.log(page1.inputCountryName());
-
-      
-      
     });
+    
+
+    
+      
+  
+
+    // if (arrowBackPage2) {
+    //   arrowBackPage2.addEventListener("click", function(){
+    //     //page1.render(dataApi)
+    //     console.log('click');
+    //   });
     //back to page 1
     //arrowBackPage2.addEventListener("click",page1.render(dataApi))
-
-    page1.inputRecommendedCountry();
   } catch (err) {
     alert(err);
   }
 }
 
 gettingData();
-
-
-
-
 
 function countryValidation() {
   if (userData.country != "") {
@@ -79,5 +82,3 @@ function countryValidation() {
     console.log("brak kraju");
   }
 }
-
-

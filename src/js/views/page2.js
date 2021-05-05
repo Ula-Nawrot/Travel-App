@@ -1,7 +1,7 @@
 import View from "./View";
 import {userData} from "./page1.js";
 
-const arrowBackPage2 = document.querySelector(".arrow_back_page2");
+
 
 
 export default class Page2 extends View {
@@ -16,7 +16,7 @@ export default class Page2 extends View {
     return`<div id="page2">
     <header>
         <div class="arrow_back_page2">
-          <img src="./images/arrow_back.svg" alt="arrow back" />
+          <img class="arrow" src="./images/arrow_back.svg" alt="arrow back" />
         </div>
         <form class="search">
           <div class="input_fiels">
