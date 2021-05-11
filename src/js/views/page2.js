@@ -1,55 +1,26 @@
 import View from "./View";
-import {userData} from "./page1.js";
-
-
-
+import { userData } from "./page1.js";
 
 export default class Page2 extends View {
-  
   constructor() {
     super();
-    
 
     //console.log(this.data.Poland);
   }
-  generateMarkup(){
-    return`<div id="page2">
-    <header>
-        <div class="arrow_back_page2">
-          <img class="arrow" src="./images/arrow_back.svg" alt="arrow back" />
-        </div>
-        <form class="search">
-          <div class="input_fiels">
-            <label for="from">Country</label>
-            <input type="text" class="search__field" value="${userData.country}" />
-          </div>
-          <div class="input_fiels">
-            <label for="from">From</label>
-            <input type="date" class="search__date_from" id="from" value="${userData.dateFrom}" />
-          </div>
-  
-          <div class="input_fiels">
-            <label for="to">To</label>
-            <input type="date" class="search__date_to" id="to" value="${userData.dateTo}"/>
-          </div>
-  
-          <div class="input_fiels">
-            <label for="No. of people">No. of people</label>
-            <input
-              type="text"
-              class="search__people"
-              id="No. of people"
-              value="${userData.noOfPeople}"
-            />
-          </div>
-        </form>
-    </header>
-  
-    <div class="cities">
-        ${this.data.map(this.generateMarkupHotel).join('')}
-    </div>`;
+  insertData() {
+    const inputCountry = document.querySelectorAll(".search__field");
+    const inputDateFrom = document.getElementById("from2");
+    const inputDateTo = document.getElementById("to2");
+    const inputPeople = document.getElementById('people2')
+    inputCountry[1].value = `${userData.country}`;
+    inputDateFrom.value = `${userData.dateFrom}`;
+    inputDateTo.value = `${userData.dateTo}`;
+    inputPeople.value = `${userData.noOfPeople}`;
   }
-  generateMarkupHotel(hotel){
+  generateMarkup() {
+    return ``;
+  }
+  generateMarkupHotel(hotel) {
     return `<div class="city">
     <img src="./images/cochem_germany.jpg" />
     <div class="hotel">
@@ -68,9 +39,6 @@ export default class Page2 extends View {
         <div class="price">${hotel.price} ${hotel.currency} /night</div>
         <button class="btn">Book</button>
     </div>
-  </div>`
+  </div>`;
   }
-  
-  
-
 }

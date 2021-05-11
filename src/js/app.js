@@ -33,6 +33,8 @@ import "../images/add_sign.svg";
 ///////////////Selecting DOM elements/////////////////////
 const searchButton = document.querySelector(".search__btn");
 const arrowBackPage2 = document.querySelector(".arrow_back_page2");
+const choosingHotel = document.getElementById("choosingHotel");
+const choosingCountry = document.getElementById("choosingCountry");
 
 async function gettingData() {
   try {
@@ -49,16 +51,16 @@ async function gettingData() {
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
       //1. Reading input values
-      if (page1.inputCountryName() && page1.validationDates())
-        page2.render(dataApi);
-        //page1.arrowBack(dataApi, page1);
+      if (page1.inputCountryName() && page1.validationDates()) {
+        choosingHotel.classList.remove("hidden");
+        choosingCountry.classList.add("hidden");
+        page2.insertData();
+        page2.arrowBack(2)
+      }
+      // page2.render(dataApi);
+      //page1.arrowBack(dataApi, page1);
       //console.log(page1.inputCountryName());
     });
-    
-
-    
-      
-  
 
     // if (arrowBackPage2) {
     //   arrowBackPage2.addEventListener("click", function(){
