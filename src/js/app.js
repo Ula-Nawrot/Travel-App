@@ -2,6 +2,7 @@ import { apiAccess } from "./hotels_API.js";
 import { userData } from "./views/page1";
 import Page2 from "./views/page2";
 import Page1 from "./views/page1.js";
+import Form from "./views/form.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { async } from "regenerator-runtime";
@@ -36,41 +37,43 @@ const searchButton = document.querySelector(".search__btn");
 const arrowBackPage2 = document.querySelector(".arrow_back_page2");
 const choosingHotel = document.getElementById("choosingHotel");
 const choosingCountry = document.getElementById("choosingCountry");
+const form = document.getElementById('form');
+const bookButton = document.querySelector(".book");
 
 async function gettingData() {
   try {
-    
     const dataApi = await apiAccess();
-    
+
     const userData = {};
     const page1 = new Page1();
     const page2 = new Page2();
+    const form = new Form();
 
-    page1.inputRecommendedCountry();
-    page1.inputDates();
-    page1.diffBetweenDates();
+    page1.renderFunctions();
+    const formPage = document.getElementById("form");
+    formPage.classList.add("hidden");
 
-    //console.log(polska);
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
       //1. Reading input values
       if (page1.inputCountryName() && page1.validationDates()) {
         choosingHotel.classList.remove("hidden");
         choosingCountry.classList.add("hidden");
-        page2.insertData();
-        page2.arrowBack(2)
-        page2.showHotels(dataApi);
+        page2.renderFunctions(dataApi);
+        form.bookButton(dataApi);
       }
-      // page2.render(dataApi);
-      //page1.arrowBack(dataApi, page1);
-      //console.log(page1.inputCountryName());
     });
-
-    // if (arrowBackPage2) {
+    // console.log(document.body.contains(bookButton));
+    // if(bookButton){
+    //   form.bookButton(dataApi);
+      
+    // }
+    // if (choosingHotel) {
     //   arrowBackPage2.addEventListener("click", function(){
     //     //page1.render(dataApi)
     //     console.log('click');
     //   });
+    
     //back to page 1
     //arrowBackPage2.addEventListener("click",page1.render(dataApi))
   } catch (err) {

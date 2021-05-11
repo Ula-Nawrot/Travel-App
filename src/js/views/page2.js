@@ -5,19 +5,16 @@ export default class Page2 extends View {
   constructor() {
     super();
   }
-  render2(data) {
-    this.data = data.Poland;
-    const markup = this.generateMarkup();
-    const mainContainer = document.querySelector(".container");
-
-    mainContainer.innerHTML = "";
-    mainContainer.insertAdjacentHTML("afterbegin", markup);
+  renderFunctions(data) {
+    this.insertData();
+    this.arrowBack(2);
+    this.showHotels(data);
   }
   insertData() {
     const inputCountry = document.querySelectorAll(".search__field");
     const inputDateFrom = document.getElementById("from2");
     const inputDateTo = document.getElementById("to2");
-    const inputPeople = document.getElementById('people2')
+    const inputPeople = document.getElementById("people2");
     inputCountry[1].value = `${userData.country}`;
     inputDateFrom.value = `${userData.dateFrom}`;
     inputDateTo.value = `${userData.dateTo}`;
@@ -25,10 +22,9 @@ export default class Page2 extends View {
   }
   showHotels(data) {
     this.data = data.Poland;
-    const hotelContainer = document.querySelector('.hotels')
-    const markup = this.data.map(this.generateMarkupHotel).join('');
+    const hotelContainer = document.querySelector(".hotels");
+    const markup = this.data.map(this.generateMarkupHotel).join("");
     hotelContainer.insertAdjacentHTML("afterbegin", markup);
-    
   }
   generateMarkupHotel(hotel) {
     return `<div class="city">
@@ -47,7 +43,7 @@ export default class Page2 extends View {
     </div>
     <div class="booking">
         <div class="price">${hotel.price} ${hotel.currency} /night</div>
-        <button class="btn">Book</button>
+        <button class="btn book">Book</button>
     </div>
   </div>`;
   }

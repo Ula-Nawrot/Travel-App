@@ -17,14 +17,7 @@ export default class Page1 extends View {
 
     //console.log(this.data.Poland);
   }
-  render() {
-    //this.data = data.Poland;
-    const markup = this.generateMarkup();
-    const mainContainer = document.querySelector(".container");
-
-    mainContainer.innerHTML = "";
-    mainContainer.insertAdjacentHTML("afterbegin", markup);
-
+  renderFunctions() {
     this.inputRecommendedCountry();
     this.inputDates();
     this.diffBetweenDates();
