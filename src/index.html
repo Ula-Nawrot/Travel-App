@@ -17,7 +17,11 @@
   </head>
   <body>
     <div class="container">
+<<<<<<< HEAD
       <!-- <div id="page1">
+=======
+      <div id="choosingCountry">
+>>>>>>> htmlWithHiddenClass
         <header>
           <p class="title">Hotels from all over Europe</p>
           <form class="search">
@@ -84,15 +88,55 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </div> -->
 
+=======
+      </div>
+      <!-- Page 2 -->
+      <div id="choosingHotel" class="hidden">
+        <header>
+            <div class="arrow_back_page2">
+              <img class="arrow" src="./images/arrow_back.svg" alt="arrow back" />
+            </div>
+            <form class="search">
+              <div class="input_fiels">
+                <label for="from">Country</label>
+                <input type="text" class="search__field" value=""/>
+              </div>
+              <div class="input_fiels">
+                <label for="from">From</label>
+                <input type="date" class="search__date_from" id="from2" value='' />
+              </div>
+      
+              <div class="input_fiels">
+                <label for="to">To</label>
+                <input type="date" class="search__date_to" id="to2" value=''/>
+              </div>
+      
+              <div class="input_fiels">
+                <label for="No. of people">No. of people</label>
+                <input
+                  type="text"
+                  class="search__people"
+                  id="people2"
+                  value=""
+                />
+              </div>
+            </form>
+        </header>
+      
+        <div class="hotels">
+            <!-- ${this.data.map(this.generateMarkupHotel).join('')} -->
+        </div>
+>>>>>>> htmlWithHiddenClass
 
 
      
       
         
       <!-- Page 3 -->
-      <!-- <div class="form">
+      <div id="form" class="hidden">
           <div class="images">
             <img src="./images/cochem_germany.jpg" />
             <div class="map"></div>
@@ -150,9 +194,9 @@
               <button class="btn">Confirm</button>
             </div>
           </div>
-        </div> -->
+        </div>
       <!-- Page 4 -->  
-      <!-- <div class="thanks_msg">
+      <div id="thanks_msg" class="hidden">
         <div class="modal">
           <button class="close-modal">&times;</button>
           <div class="message">
@@ -162,7 +206,7 @@
           <img src="./images/cochem_germany.jpg" />
         </div>
         <div class="overlay hidden"></div>
-      </div>    -->
+      </div>   
     
   </body>
 </html>

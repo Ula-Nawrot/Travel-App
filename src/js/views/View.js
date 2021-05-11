@@ -5,18 +5,35 @@ const arrowBackPage2 = document.querySelector(".arrow");
 
 export default class View {
   constructor() {
-    
+    this.errorMessage =
+      "We could not find that recipe. Please try another one!";
+    this.dataFrom;
+    this.dataTo;
+
+    //console.log(this.data.Poland);
   }
-  arrowBack(data, page) {
+  arrowBack(page) {
     const arrowBackPage2 = document.querySelector(".arrow");
-    if (document.body.contains(arrowBackPage2)) {
-      arrowBackPage2.addEventListener("click", function () {
-        page.render(data, 1);
-        console.log("click");
-      });
-    } else {
-      console.log("EventListener wasn't add to arrow back");
-    }
+    const choosingHotel = document.getElementById("choosingHotel");
+    const choosingCountry = document.getElementById("choosingCountry");
+    const inputCountry = document.querySelector(".search__field");
+    const inputDateFrom = document.querySelector(".search__date_from");
+    const inputDateTo = document.querySelector(".search__date_to");
+    const inputPeople = document.querySelector("#people");
+
+    arrowBackPage2.addEventListener("click", function () {
+      //page.render(data);
+
+      console.log("click" + page);
+      if (page == 2) {
+        choosingHotel.classList.add("hidden");
+        choosingCountry.classList.remove("hidden");
+        inputCountry.value = '';
+        inputDateFrom.value = '';
+        inputDateTo.value = '';
+        inputPeople.value = '';
+      }
+    });
   }
 
   variableAssignment() {
