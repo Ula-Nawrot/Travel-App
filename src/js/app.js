@@ -31,33 +31,33 @@ import "../images/add_sign.svg";
 
 /////////////////////////////////////////
 ///////////////Selecting DOM elements/////////////////////
+//const searchButton = document.querySelector(".search__btn");
 const searchButton = document.querySelector(".search__btn");
-const arrowBackPage2 = document.querySelector(".arrow_back_page2");
 
 async function gettingData() {
   try {
+    
     const dataApi = await apiAccess();
+    
     const userData = {};
     const page1 = new Page1();
     const page2 = new Page2();
 
-    page1.inputRecommendedCountry();
-    page1.inputDates();
-    page1.diffBetweenDates();
-
-    //console.log(polska);
-    searchButton.addEventListener("click", function (e) {
-      e.preventDefault();
-      //1. Reading input values
-      if (page1.inputCountryName() && page1.validationDates())
-        page2.render(dataApi);
-        //page1.arrowBack(dataApi, page1);
-      //console.log(page1.inputCountryName());
-    });
-    
-
-    
+    page1.render();
+    if(document.body.contains(searchButton)){
       
+      searchButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        //1. Reading input values
+        //if (page1.inputCountryName() && page1.validationDates())
+        page2.render2(dataApi)
+          //page1.arrowBack(dataApi, page1);
+        //console.log(page1.inputCountryName());
+      });
+    }
+    // page1.inputRecommendedCountry();
+    // page1.inputDates();
+    // page1.diffBetweenDates();
   
 
     // if (arrowBackPage2) {
