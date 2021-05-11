@@ -17,8 +17,12 @@ export default class Page2 extends View {
     inputDateTo.value = `${userData.dateTo}`;
     inputPeople.value = `${userData.noOfPeople}`;
   }
-  generateMarkup() {
-    return ``;
+  showHotels(data) {
+    this.data = data.Poland;
+    const hotelContainer = document.querySelector('.hotels')
+    const markup = this.data.map(this.generateMarkupHotel).join('');
+    hotelContainer.insertAdjacentHTML("afterbegin", markup);
+    
   }
   generateMarkupHotel(hotel) {
     return `<div class="city">
@@ -27,7 +31,7 @@ export default class Page2 extends View {
       <p class="hotel_name">${hotel.name} </p>
       <img src="./images/stars_1.svg" alt="one star" class="stars"/>
       <ul>
-        <li>${hotel.facilities}</li>
+        <li>${hotel.facilities[0].name}</li>
         <li>Free WiFi internet</li>
         <li>Free parking</li>
         <li>Fitness center</li>

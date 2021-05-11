@@ -1,4 +1,3 @@
-
 const mainContainer = document.querySelector(".container");
 const inputDateFrom = document.querySelector(".search__date_from");
 const inputDateTo = document.querySelector(".search__date_to");
@@ -17,6 +16,10 @@ export default class View {
     const arrowBackPage2 = document.querySelector(".arrow");
     const choosingHotel = document.getElementById("choosingHotel");
     const choosingCountry = document.getElementById("choosingCountry");
+    const inputCountry = document.querySelector(".search__field");
+    const inputDateFrom = document.querySelector(".search__date_from");
+    const inputDateTo = document.querySelector(".search__date_to");
+    const inputPeople = document.querySelector("#people");
 
     arrowBackPage2.addEventListener("click", function () {
       //page.render(data);
@@ -25,6 +28,10 @@ export default class View {
       if (page == 2) {
         choosingHotel.classList.add("hidden");
         choosingCountry.classList.remove("hidden");
+        inputCountry.value = '';
+        inputDateFrom.value = '';
+        inputDateTo.value = '';
+        inputPeople.value = '';
       }
     });
   }

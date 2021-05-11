@@ -56,6 +56,7 @@ async function gettingData() {
         choosingCountry.classList.add("hidden");
         page2.insertData();
         page2.arrowBack(2)
+        page2.showHotels(dataApi);
       }
       // page2.render(dataApi);
       //page1.arrowBack(dataApi, page1);
