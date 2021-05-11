@@ -2,7 +2,7 @@ import { apiAccess } from "./hotels_API.js";
 import { userData } from "./views/page1";
 import Page2 from "./views/page2";
 import Page1 from "./views/page1.js";
-import Form from "./views/form.js";
+import Page3 from "./views/page3.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { async } from "regenerator-runtime";
@@ -47,11 +47,11 @@ async function gettingData() {
     const userData = {};
     const page1 = new Page1();
     const page2 = new Page2();
-    const form = new Form();
+    const page3 = new Page3();
 
     page1.renderFunctions();
-    const formPage = document.getElementById("form");
-    formPage.classList.add("hidden");
+    // const formPage = document.getElementById("form");
+    // formPage.classList.add("hidden");
 
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
@@ -60,7 +60,7 @@ async function gettingData() {
         choosingHotel.classList.remove("hidden");
         choosingCountry.classList.add("hidden");
         page2.renderFunctions(dataApi);
-        form.bookButton(dataApi);
+        page3.bookButton(dataApi);
       }
     });
     // console.log(document.body.contains(bookButton));
@@ -83,11 +83,4 @@ async function gettingData() {
 
 gettingData();
 
-function countryValidation() {
-  if (userData.country != "") {
-    userData.country = inputCountry.value;
-    console.log(userData);
-  } else {
-    console.log("brak kraju");
-  }
-}
+

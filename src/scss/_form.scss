@@ -1,10 +1,15 @@
+#page3 {
+  //@include centered-object;
+  //margin-left: 200px;
+  width: 100vw;
+}
 #form {
-  display: flex;
+  @include flex-row;
   width: 1200px;
   background-color: $secondBackground;
   padding: 3rem 0;
   font-size: 1rem;
-  margin: 3rem 0;
+  margin:auto;
   @media (max-width: 1200px) {
     width: 940px;
   }
@@ -16,7 +21,7 @@
     width: 100%;
   }
   @media (max-width: 576px) {
-    @include flex-column;
+    flex-direction: column;
   }
 }
 
