@@ -2,29 +2,34 @@
   @include centered-object;
 }
 .hotels {
-  @include flex-column;
+  @include centered-object;
   box-sizing: border-box;
   width: 100vw;
   padding: 2rem;
   margin-bottom: 2rem;
   
-}
-
-.city {
-  @include flex-row;
-  font-size: 1rem;
-  border-radius: $imgBorderRadius;
-  margin-bottom: 2rem;
-  @media (max-width: 768px) {
-    @include flex-column;
-  }
-
-  img {
-    border-radius: $imgBorderRadius 0 0 $imgBorderRadius;
-    width: 25%;
+  .city {
+    @include flex-row;
+    font-size: 1rem;
+    border-radius: $imgBorderRadius;
+    margin-bottom: 2rem;
     @media (max-width: 768px) {
-      width: 100%;
-      border-radius: $imgBorderRadius $imgBorderRadius 0 0;
+      @include flex-column;
+    }
+    @media (max-width: 768px) {
+      width: 60%;
+    }
+    @media (max-width: 576px) {
+      width: 80%;
+    }
+
+    img {
+      border-radius: $imgBorderRadius 0 0 $imgBorderRadius;
+      width: 25%;
+      @media (max-width: 768px) {
+        width: 100%;
+        border-radius: $imgBorderRadius $imgBorderRadius 0 0;
+      }
     }
   }
 
