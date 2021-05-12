@@ -21,8 +21,6 @@ export default class Page1 extends View {
     this.inputRecommendedCountry();
     this.inputDates();
     this.diffBetweenDates();
-    //this.searchButton(renderedpage)
-
   }
   inputDates() {
     const inputDateFrom = document.querySelector(".search__date_from");

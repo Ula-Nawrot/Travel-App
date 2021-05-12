@@ -12,13 +12,12 @@ export default class View {
 
     //console.log(this.data.Poland);
   }
-  changeDate(date){
+  changeDate(date) {
     const mydate = new Date(date);
     const day = `${mydate.getDate()}`.padStart(2, 0);
     const month = `${mydate.getMonth() + 1}`.padStart(2, 0);
     const year = `${mydate.getFullYear()}`;
-    return [day,month,year]
-    
+    return [day, month, year];
   }
   arrowBack(page) {
     const arrowBackPage2 = document.querySelector(".arrow");
@@ -36,10 +35,10 @@ export default class View {
       if (page == 2) {
         choosingHotel.classList.add("hidden");
         choosingCountry.classList.remove("hidden");
-        inputCountry.value = '';
-        inputDateFrom.value = '';
-        inputDateTo.value = '';
-        inputPeople.value = '';
+        inputCountry.value = "";
+        inputDateFrom.value = "";
+        inputDateTo.value = "";
+        inputPeople.value = "";
       }
     });
   }
@@ -64,8 +63,24 @@ export default class View {
 
       const differenceInDays = differenceInTime / (1000 * 3600 * 24);
       console.log(`Twoja wycieczka będzie trwała ${differenceInDays}`);
+      return differenceInDays;
     });
   }
+  diffBetweenDates3(data) {
+
+    const from = data.dateFrom;
+    const to = data.dateTo;;
+
+    const date1 = new Date(from);
+    const date2 = new Date(to);
+
+    const differenceInTime = date2.getTime() - date1.getTime();
+
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    console.log(`Twoja wycieczka będzie trwała ${differenceInDays}`);
+    return differenceInDays;
+  }
+
   // render(data, page) {
   //   this.data = data.Poland;
   //   const markup = this.generateMarkup();
