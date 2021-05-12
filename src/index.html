@@ -136,27 +136,36 @@
             <p id="form_hotel_name" class="hotel_name">The Westin Hamburg</p>
             <img src="./images/stars_1.svg" alt="one star" class="stars"/>
             <div class="two_columns">
-              <span>Country:</span><p id="form_hotel_country" > Germany</p>
-              <span>City:</span><p id="form_hotel_city"> Cochem</p>
+              <div class="reservation_data">
+                <span>Country:</span><p id="form_hotel_country" > Germany</p>
+              </div>
+              <div class="reservation_data">
+                <span>City:</span><p id="form_hotel_city"> Cochem</p>
+              </div>
+              
             </div>
             <div class="two_columns">
-              <span>From:</span><p id="form_data_from"> 14/04/2021</p>
-              <span>To:</span> <p id="form_data_to">18/04/2021</p>
+              <div class="reservation_data">
+                <span>From:</span><p id="form_data_from"> 14/04/2021</p>
+              </div>
+              <div class="reservation_data">
+                <span>To:</span> <p id="form_data_to">18/04/2021</p>
+              </div>
             </div>
             <span>No. of people:</span><p id="form_people"> 2</p>
             <div class="two_columns">
               <p><span>Additional options:</span></p>
               <div class="options">
                   <div id="breakfast">
-                    <img src="./images/add_sign.svg"/>
+                    <input type="checkbox" id="checkboxBreakfast">
                     <p>Breakfast - 10$/day</p>
                   </div>
-                  <div id="breakfast">
-                    <img src="./images/add_sign.svg"/>
+                  <div id="taxi">
+                    <input type="checkbox" id="checkboxTaxi">
                     <p>Taxi to hotel - 50$</p>
                   </div>
-                  <div id="breakfast">
-                    <img src="./images/add_sign.svg"/>
+                  <div id="parking">
+                    <input type="checkbox" id="checkboxParking">
                     <p>Parking - 5$/day</p>
                   </div>
               </div>
