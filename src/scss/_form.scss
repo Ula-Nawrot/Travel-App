@@ -15,7 +15,6 @@
   }
   @media (max-width: 960px) {
     width: 730px;
-    margin: 0;
   }
   @media (max-width: 768px) {
     width: 100%;
@@ -72,6 +71,7 @@
     font-weight: bold;
     margin: 0;
     margin-bottom: 14px;
+    padding-left: 0;
   }
 
   img {
@@ -89,9 +89,14 @@
   span {
     font-weight: bold;
     font-size: 1.1rem;
+    margin: 10px 0;
   }
   p {
     margin: 10px 0;
+    padding-left: 5px;
+  }
+  #form_people{
+    display: inline-block;
   }
   .options {
     margin: 1rem 0;

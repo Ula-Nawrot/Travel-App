@@ -12,6 +12,14 @@ export default class View {
 
     //console.log(this.data.Poland);
   }
+  changeDate(date){
+    const mydate = new Date(date);
+    const day = `${mydate.getDate()}`.padStart(2, 0);
+    const month = `${mydate.getMonth() + 1}`.padStart(2, 0);
+    const year = `${mydate.getFullYear()}`;
+    return [day,month,year]
+    
+  }
   arrowBack(page) {
     const arrowBackPage2 = document.querySelector(".arrow");
     const choosingHotel = document.getElementById("choosingHotel");

@@ -44,15 +44,16 @@ async function gettingData() {
   try {
     const dataApi = await apiAccess();
 
-    const userData = {};
+    
     const page1 = new Page1();
     const page2 = new Page2();
     const page3 = new Page3();
+    
 
     page1.renderFunctions();
+    //console.log(userData);
     // const formPage = document.getElementById("form");
     // formPage.classList.add("hidden");
-
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
       //1. Reading input values
@@ -60,9 +61,13 @@ async function gettingData() {
         choosingHotel.classList.remove("hidden");
         choosingCountry.classList.add("hidden");
         page2.renderFunctions(dataApi);
-        page3.bookButton(dataApi);
+        page3.bookButton(dataApi, userData);
+        console.log(userData);
+        
       }
     });
+
+    
     // console.log(document.body.contains(bookButton));
     // if(bookButton){
     //   form.bookButton(dataApi);

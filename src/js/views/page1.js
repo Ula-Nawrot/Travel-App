@@ -75,7 +75,6 @@ export default class Page1 extends View {
       userData.dateFrom = inputDateFrom.value;
       userData.dateTo = inputDateTo.value;
       userData.noOfPeople = inputPeople.value;
-      console.log(userData);
 
       return true;
     } else {
