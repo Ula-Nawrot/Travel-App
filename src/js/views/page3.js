@@ -26,8 +26,8 @@ export default class Page3 extends View {
 
       //4.Przypisanie danych hotelu do formularza
       this.feelingForm(this.data, userData);
-      this.additionalOptions(this.data)
-      this.priceCalc(this.data, userData)
+      this.additionalOptions(this.data);
+      this.priceCalc(this.data, userData);
     };
   }
   feelingForm(dataHotel, userData) {
@@ -38,7 +38,7 @@ export default class Page3 extends View {
     const dateTo = document.getElementById("form_data_to");
     const selectedDAteFrom = this.changeDate(userData.dateFrom);
     const selectedDAteTo = this.changeDate(userData.dateTo);
-    const noOfPeople = document.getElementById('form_people');
+    const noOfPeople = document.getElementById("form_people");
 
     hotelName.textContent = dataHotel[0].name;
     hotelCountry.textContent = userData.country;
@@ -51,28 +51,47 @@ export default class Page3 extends View {
     console.log(hotelName.textContent);
     console.log(dataHotel);
   }
-  additionalOptions(datahotel){
-    const breakfast = document.getElementById('breakfast');
-    const taxi = document.getElementById('taxi');
-    const parking = document.getElementById('parking');
+  additionalOptions(datahotel) {
+    const breakfast = document.getElementById("breakfast");
+    const taxi = document.getElementById("taxi");
+    const parking = document.getElementById("parking");
 
     breakfast.textContent = `Breakfast - 10 ${datahotel[0].currency}/day`;
     taxi.textContent = `Taxi to hotel - 50 ${datahotel[0].currency}`;
     parking.textContent = `Parking - 5 ${datahotel[0].currency}/day`;
   }
-  priceCalc(datahotel,dataUser){
-    const showPrice = document.getElementById('totalAmount');
+  priceCalc(datahotel, dataUser) {
+    const showPrice = document.getElementById("totalAmount");
     const dateFrom = document.getElementById("form_data_from");
     const dateTo = document.getElementById("form_data_to");
 
     const dayAmount = this.diffBetweenDates3(dataUser);
     const pricePerNight = datahotel[0].price;
     const currency = datahotel[0].currency;
+    
     console.log(`Price per night ${pricePerNight}`);
     console.log(dayAmount);
+    //const optionPrice = this.checkBoxOptions();
+    this.checkBoxOptions();
+    const totalAmount = pricePerNight * dayAmount;// +optionPrice;
 
-    const totalAmount = pricePerNight*dayAmount;
-
-    showPrice.textContent = `Total Price: ${totalAmount} ${currency}`
+    showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
+    ///////////////////////////////////////////////////////////
+  }
+  checkBoxOptions() {
+    const options = document.querySelector(".options");
+    const addedOptions = null;
+    options.onchange = function (e) {
+      e.preventDefault();
+  
+      const checkboxBreakfast = document.getElementById("checkboxBreakfast")
+      
+      if (checkboxBreakfast.checked == true){
+        addedOptions += 10
+      }
+      
+    };
+    console.log(addedOptions);
+    //return addedOptions
   }
 }
