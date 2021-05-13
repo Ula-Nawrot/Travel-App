@@ -25,8 +25,14 @@ export default class Page2 extends View {
     const hotelContainer = document.querySelector(".hotels");
     const markup = this.data.map(this.generateMarkupHotel).join("");
     hotelContainer.insertAdjacentHTML("afterbegin", markup);
+    
   }
   generateMarkupHotel(hotel) {
+    userData;
+    console.log(userData);
+    const days = View.prototype.diffBetweenDates3(userData)
+    //const days = this.diffBetweenDates3(userData);
+    console.log(days);
     return `<div class="city">
     <img src="./images/cochem_germany.jpg" />
     <div class="hotel">
@@ -42,7 +48,7 @@ export default class Page2 extends View {
       </ul>
     </div>
     <div class="booking">
-        <div class="price">${hotel.price} ${hotel.currency} /night</div>
+        <div class="price">${hotel.price*userData.noOfPeople*days} ${hotel.currency} /night</div>
         <button class="btn book">Book</button>
     </div>
   </div>`;

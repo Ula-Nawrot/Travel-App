@@ -68,6 +68,7 @@ export default class Page3 extends View {
     const dayAmount = this.diffBetweenDates3(dataUser);
     const pricePerNight = datahotel[0].price;
     const currency = datahotel[0].currency;
+    const people = dataUser.noOfPeople;
     let totalAmount = pricePerNight * dayAmount; // +optionPrice;
 
     showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
