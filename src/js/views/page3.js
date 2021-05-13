@@ -68,30 +68,57 @@ export default class Page3 extends View {
     const dayAmount = this.diffBetweenDates3(dataUser);
     const pricePerNight = datahotel[0].price;
     const currency = datahotel[0].currency;
-    
-    console.log(`Price per night ${pricePerNight}`);
-    console.log(dayAmount);
-    //const optionPrice = this.checkBoxOptions();
-    this.checkBoxOptions();
-    const totalAmount = pricePerNight * dayAmount;// +optionPrice;
+    let totalAmount = pricePerNight * dayAmount; // +optionPrice;
 
     showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
-    ///////////////////////////////////////////////////////////
-  }
-  checkBoxOptions() {
-    const options = document.querySelector(".options");
-    const addedOptions = null;
-    options.onchange = function (e) {
-      e.preventDefault();
-  
-      const checkboxBreakfast = document.getElementById("checkboxBreakfast")
-      
-      if (checkboxBreakfast.checked == true){
-        addedOptions += 10
+    showPrice.setAttribute("value", `${totalAmount}`);
+    /////////////////////////////////////////////////////
+    const el = document.querySelector(".options");
+    const products = el.getElementsByTagName("input");
+    const lenght = products.length;
+    for (let i = 0; i < lenght; i++) {
+      if (products[i].type === "checkbox") {
+        products[i].onclick = updateCost;
       }
-      
-    };
-    console.log(addedOptions);
-    //return addedOptions
+    }
+    ///////////////////////////////////////////////////////////
+
+    function updateCost(e) {
+      console.log(e.target);
+      console.log(e.target.value);
+
+      console.log("val przed" + totalAmount);
+      if (this.checked) {
+        console.log("to jest id of this:" + this.id);
+        if (this.id == "checkboxTaxi") {
+          totalAmount += parseFloat(this.value);
+          showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
+        } else {
+          console.log(typeof totalAmount);
+          totalAmount += parseFloat(this.value) * dayAmount;
+          console.log("kiedy się kliknie" + typeof totalAmount);
+          showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
+        }
+      } else {
+        if (this.id == "checkboxTaxi") {
+          totalAmount -= parseFloat(this.value);
+          showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
+        } else {
+          totalAmount -= parseFloat(this.value) * dayAmount;
+          console.log("kiedy się odkliknie" + totalAmount);
+          showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
+        }
+      }
+      console.log("val po if" + totalAmount);
+      document.querySelector("#totalAmount").value = totalAmount;
+      console.log(document.querySelector("#totalAmount").value);
+    }
   }
+  // updateCost(e) {
+  //   const myForm = document.querySelector('.options');
+  //   const val = document.getElementById('totalAmount').value;
+  //   console.log(e.target);
+
+  //   //return addedOptions
+  // }
 }
