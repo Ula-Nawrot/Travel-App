@@ -7,7 +7,7 @@ export default class Page2 extends View {
   }
   renderFunctions(data) {
     this.insertData();
-    this.arrowBack(2);
+    this.arrowBack();
     this.showHotels(data);
   }
   insertData() {
@@ -29,10 +29,8 @@ export default class Page2 extends View {
   }
   generateMarkupHotel(hotel) {
     userData;
-    console.log(userData);
     const days = View.prototype.diffBetweenDates3(userData)
-    //const days = this.diffBetweenDates3(userData);
-    console.log(days);
+
     return `<div class="city">
     <img src="./images/cochem_germany.jpg" />
     <div class="hotel">

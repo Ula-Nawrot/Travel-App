@@ -14,7 +14,7 @@ export default class Page3 extends View {
       return hotel.id;
     });
     //2.Przypisz eventListener do buttona
-    const formPage = document.getElementById("page3");
+    const formPage = document.getElementById("feelingForm");
     const bookButton = document.querySelector(".book");
     const choosingHotel = document.getElementById("choosingHotel");
 
@@ -28,6 +28,7 @@ export default class Page3 extends View {
       this.feelingForm(this.data, userData);
       this.additionalOptions(this.data);
       this.priceCalc(this.data, userData);
+      this.arrowBack();
     };
   }
   feelingForm(dataHotel, userData) {
@@ -95,9 +96,7 @@ export default class Page3 extends View {
           totalAmount += parseFloat(this.value);
           showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
         } else {
-          console.log(typeof totalAmount);
           totalAmount += parseFloat(this.value) * dayAmount;
-          console.log("kiedy się kliknie" + typeof totalAmount);
           showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
         }
       } else {
@@ -106,20 +105,9 @@ export default class Page3 extends View {
           showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
         } else {
           totalAmount -= parseFloat(this.value) * dayAmount;
-          console.log("kiedy się odkliknie" + totalAmount);
           showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
         }
       }
-      console.log("val po if" + totalAmount);
-      document.querySelector("#totalAmount").value = totalAmount;
-      console.log(document.querySelector("#totalAmount").value);
     }
   }
-  // updateCost(e) {
-  //   const myForm = document.querySelector('.options');
-  //   const val = document.getElementById('totalAmount').value;
-  //   console.log(e.target);
-
-  //   //return addedOptions
-  // }
 }

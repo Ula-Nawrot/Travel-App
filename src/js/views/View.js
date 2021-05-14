@@ -19,33 +19,36 @@ export default class View {
     const year = `${mydate.getFullYear()}`;
     return [day, month, year];
   }
-  arrowBack(page) {
-    const arrowBackPage2 = document.querySelector(".arrow");
+  arrowBack() {
+    const arrowBackPage2 = document.querySelectorAll(".arrow");
     const choosingHotel = document.getElementById("choosingHotel");
     const choosingCountry = document.getElementById("choosingCountry");
+    const feelingForm = document.getElementById('feelingForm')
     const inputCountry = document.querySelector(".search__field");
     const inputDateFrom = document.querySelector(".search__date_from");
     const inputDateTo = document.querySelector(".search__date_to");
     const inputPeople = document.querySelector("#people");
-
-    arrowBackPage2.addEventListener("click", function () {
-      //page.render(data);
-
-      console.log("click" + page);
-      if (page == 2) {
+    arrowBackPage2.forEach((item,i) => item.addEventListener("click", function () {
+      
+      if (i === 0) {
         choosingHotel.classList.add("hidden");
         choosingCountry.classList.remove("hidden");
         inputCountry.value = "";
         inputDateFrom.value = "";
         inputDateTo.value = "";
         inputPeople.value = "";
+        console.log("click" + i+2);
       }
-    });
+       if (i === 1){
+        feelingForm.classList.add("hidden")
+        choosingHotel.classList.remove("hidden");
+        console.log("click" + i+2);
+      }
+    }));
   }
 
   variableAssignment() {
     this.inputCountry = document.querySelector(".search__field");
-    console.log(this.inputCountry);
   }
 
   diffBetweenDates() {
@@ -62,7 +65,6 @@ export default class View {
       const differenceInTime = date2.getTime() - date1.getTime();
 
       const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-      console.log(`Twoja wycieczka będzie trwała ${differenceInDays}`);
       return differenceInDays;
     });
   }
@@ -77,21 +79,6 @@ export default class View {
     const differenceInTime = date2.getTime() - date1.getTime();
 
     const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-    console.log(`Twoja wycieczka będzie trwała ${differenceInDays}`);
     return differenceInDays;
   }
-
-  // render(data, page) {
-  //   this.data = data.Poland;
-  //   const markup = this.generateMarkup();
-
-  //   mainContainer.innerHTML = "";
-  //   mainContainer.insertAdjacentHTML("afterbegin", markup);
-
-  //   if (page == 1) {
-  //     this.inputRecommendedCountry();
-  //     this.inputDates();
-  //     this.diffBetweenDates();
-  //   }
-  // }
 }
