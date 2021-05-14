@@ -90,6 +90,9 @@ header {
 }
 
 ////////////Page 2////////////////
+input[type="text"]:disabled {
+  background: $mainBackgroung
+}
 .arrow_back_page2 {
   width: 100vw;
   display: flex;

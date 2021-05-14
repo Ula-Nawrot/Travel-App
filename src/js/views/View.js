@@ -37,12 +37,10 @@ export default class View {
         inputDateFrom.value = "";
         inputDateTo.value = "";
         inputPeople.value = "";
-        console.log("click" + i+2);
       }
        if (i === 1){
         feelingForm.classList.add("hidden")
         choosingHotel.classList.remove("hidden");
-        console.log("click" + i+2);
       }
     }));
   }
