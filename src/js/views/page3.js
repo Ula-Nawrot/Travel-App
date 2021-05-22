@@ -29,6 +29,7 @@ export default class Page3 extends View {
       this.additionalOptions(this.data);
       this.priceCalc(this.data, userData);
       this.arrowBack();
+      this.loadMap(this.data);
     };
   }
   feelingForm(dataHotel, userData) {
@@ -70,7 +71,7 @@ export default class Page3 extends View {
     const pricePerNight = datahotel[0].price;
     const currency = datahotel[0].currency;
     const people = dataUser.noOfPeople;
-    let totalAmount = pricePerNight * dayAmount*people; // +optionPrice;
+    let totalAmount = pricePerNight * dayAmount * people; // +optionPrice;
 
     showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
     showPrice.setAttribute("value", `${totalAmount}`);
@@ -109,5 +110,25 @@ export default class Page3 extends View {
         }
       }
     }
+  }
+  loadMap(data) {
+    const latitude = data[0].location.latitude;
+    const longitude = data[0].location.longitude;
+    console.log("latitude:" + latitude + " longitude: " + longitude);
+    const map = L.map("map").setView([latitude, longitude], 10);
+
+    L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'sk.eyJ1Ijoic2lvc3RyYXVyc3p1bGFua2EiLCJhIjoiY2tsemVubTlpM2pscjJwcW0ycXdzYjYyMyJ9.6WdnQPNfiC4g4lKChZfa5g'
+        }).addTo(map);
+
+    L.marker([latitude, longitude])
+      .addTo(map)
+      .bindPopup(data[0].name)
+      .openPopup();
   }
 }

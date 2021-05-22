@@ -1,4 +1,4 @@
-import { apiAccess } from "./hotels_API.js";
+import { hotelsAPI } from "./hotels_API.js";
 import { userData } from "./views/page1";
 import Page2 from "./views/page2";
 import Page1 from "./views/page1.js";
@@ -42,7 +42,7 @@ const bookButton = document.querySelector(".book");
 
 async function gettingData() {
   try {
-    const dataApi = await apiAccess();
+    const dataApi = await hotelsAPI();
 
     
     const page1 = new Page1();
