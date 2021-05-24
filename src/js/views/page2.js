@@ -1,5 +1,6 @@
 import View from "./View";
 import { userData } from "./page1.js";
+import { doc } from "prettier";
 
 export default class Page2 extends View {
   constructor() {
@@ -9,6 +10,7 @@ export default class Page2 extends View {
     this.insertData();
     this.arrowBack();
     this.showHotels(data);
+    this.updatePriceOfHotel(data);
   }
   insertData() {
     const inputCountry = document.querySelectorAll(".search__field");
@@ -25,11 +27,10 @@ export default class Page2 extends View {
     const hotelContainer = document.querySelector(".hotels");
     const markup = this.data.map(this.generateMarkupHotel).join("");
     hotelContainer.insertAdjacentHTML("afterbegin", markup);
-    
   }
   generateMarkupHotel(hotel) {
     userData;
-    const days = View.prototype.diffBetweenDates3(userData)
+    const days = View.prototype.diffBetweenDates3(userData);
 
     return `<div class="city">
     <img src="./images/cochem_germany.jpg" />
@@ -46,9 +47,29 @@ export default class Page2 extends View {
       </ul>
     </div>
     <div class="booking">
-        <div class="price">${hotel.price*userData.noOfPeople*days} ${hotel.currency} /night</div>
+        <div class="price">${hotel.price * userData.noOfPeople * days} ${
+      hotel.currency} /night</div>
         <button class="btn book">Book</button>
     </div>
   </div>`;
+  }
+  updatePriceOfHotel(data) {
+    userData;
+    this.hotel = data.Poland[0];
+    const containerPage2 = document.getElementById("choosingHotel");
+    const inputDateFrom = document.getElementById("from2");
+    const inputDateTo = document.getElementById("to2");
+    const priceContainer = containerPage2.querySelectorAll(".price");
+    
+    containerPage2.onchange = () => {
+      const days = View.prototype.diffBetweenDates3(userData);
+      userData.dateFrom = inputDateFrom.value;
+      userData.dateTo = inputDateTo.value;
+      priceContainer.forEach((el) => {
+        el.innerHTML = `${this.hotel.price * userData.noOfPeople * days} ${
+          this.hotel.currency} /night`
+        console.log(el.innerHTML);
+      });
+    };
   }
 }
