@@ -8,12 +8,12 @@ export default class Page3 extends View {
   }
   //btn_book
   bookButton(data, userData) {
-    //1.Przypisanie do btn addEvent listener
+    
     this.data = data.Poland;
     const hotelID = this.data.map((hotel) => {
       return hotel.id;
     });
-    //2.Przypisz eventListener do buttona
+    //Przypisz eventListener do buttona
     const formPage = document.getElementById("feelingForm");
     const bookButton = document.querySelector(".book");
     const choosingHotel = document.getElementById("choosingHotel");
@@ -23,6 +23,8 @@ export default class Page3 extends View {
 
       formPage.classList.remove("hidden");
       choosingHotel.classList.add("hidden");
+      //pobranie danych z local Storage po reload of the page
+      formPage.onload = this.retrieveDataFromLocalStorage();
 
       //4.Przypisanie danych hotelu do formularza
       this.feelingForm(this.data, userData);
@@ -30,6 +32,7 @@ export default class Page3 extends View {
       this.priceCalc(this.data, userData);
       this.arrowBack();
       this.loadMap(this.data);
+      this.saveInLocalStorage();
     };
   }
   feelingForm(dataHotel, userData) {
@@ -87,12 +90,7 @@ export default class Page3 extends View {
     ///////////////////////////////////////////////////////////
 
     function updateCost(e) {
-      console.log(e.target);
-      console.log(e.target.value);
-
-      console.log("val przed" + totalAmount);
       if (this.checked) {
-        console.log("to jest id of this:" + this.id);
         if (this.id == "checkboxTaxi") {
           totalAmount += parseFloat(this.value);
           showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
@@ -117,18 +115,58 @@ export default class Page3 extends View {
     console.log("latitude:" + latitude + " longitude: " + longitude);
     const map = L.map("map").setView([latitude, longitude], 10);
 
-    L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'sk.eyJ1Ijoic2lvc3RyYXVyc3p1bGFua2EiLCJhIjoiY2tsemVubTlpM2pscjJwcW0ycXdzYjYyMyJ9.6WdnQPNfiC4g4lKChZfa5g'
-        }).addTo(map);
+    L.tileLayer(
+      `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`,
+      {
+        attribution:
+          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: "mapbox/streets-v11",
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken:
+          "sk.eyJ1Ijoic2lvc3RyYXVyc3p1bGFua2EiLCJhIjoiY2tsemVubTlpM2pscjJwcW0ycXdzYjYyMyJ9.6WdnQPNfiC4g4lKChZfa5g",
+      }
+    ).addTo(map);
 
     L.marker([latitude, longitude])
       .addTo(map)
       .bindPopup(data[0].name)
       .openPopup();
+  }
+  saveInLocalStorage() {
+    const inputContainer = document.getElementById("form");
+
+    inputContainer.onchange = () => {
+      const breakfast = document.getElementById("checkboxBreakfast");
+      const taxi = document.getElementById("checkboxTaxi");
+      const parking = document.getElementById("checkboxParking");
+      const surname = document.getElementById("surname");
+      const email = document.getElementById("email");
+      console.log(breakfast.checked);
+
+      const formDataToSave = {
+        breakfast: breakfast.checked,
+        taxi: taxi.checked,
+        parking: parking.checked,
+        surname: surname.value,
+        email: email.value,
+      };
+      localStorage.setItem("formDataToSave", JSON.stringify(formDataToSave));
+    };
+  }
+  retrieveDataFromLocalStorage() {
+    const retrievedData = JSON.parse(localStorage.getItem("formDataToSave"));
+    const breakfast = document.getElementById("checkboxBreakfast");
+    const taxi = document.getElementById("checkboxTaxi");
+    const parking = document.getElementById("checkboxParking");
+    const surname = document.getElementById("surname");
+    const email = document.getElementById("email");
+
+    breakfast.checked = retrievedData.breakfast;
+    taxi.checked = retrievedData.taxi;
+    parking.checked = retrievedData.parking;
+    surname.value = retrievedData.surname;
+    email.value = retrievedData.email;
   }
 }

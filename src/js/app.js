@@ -40,6 +40,8 @@ const choosingCountry = document.getElementById("choosingCountry");
 const form = document.getElementById('form');
 const bookButton = document.querySelector(".book");
 
+localStorage.clear();
+
 async function gettingData() {
   try {
     const dataApi = await hotelsAPI();
