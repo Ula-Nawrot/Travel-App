@@ -22,20 +22,8 @@ export default class Page1 extends View {
     this.inputDates();
     this.diffBetweenDates();
   }
-  inputDates() {
-    const inputDateFrom = document.querySelector(".search__date_from");
-    const inputDateTo = document.querySelector(".search__date_to");
-    const now = new Date();
-    const day = `${now.getDate()}`.padStart(2, 0);
-    const month = `${now.getMonth() + 1}`.padStart(2, 0);
-    const year = now.getFullYear();
+  
 
-    inputDateFrom.setAttribute("min", `${year}-${month}-${day}`);
-
-    inputDateFrom.addEventListener("change", function () {
-      inputDateTo.setAttribute("min", `${inputDateFrom.value}`);
-    });
-  }
   validationDates() {
     const inputDateFrom = document.querySelector(".search__date_from");
     const inputDateTo = document.querySelector(".search__date_to");

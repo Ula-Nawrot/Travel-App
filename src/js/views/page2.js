@@ -8,6 +8,7 @@ export default class Page2 extends View {
   }
   renderFunctions(data) {
     this.insertData();
+    this.inputDates();
     this.arrowBack();
     this.showHotels(data);
     this.updatePriceOfHotel(data);
@@ -63,8 +64,11 @@ export default class Page2 extends View {
     
     containerPage2.onchange = () => {
       const days = View.prototype.diffBetweenDates3(userData);
+      console.log('number of days:'+ days);
       userData.dateFrom = inputDateFrom.value;
+      console.log(userData.dateFrom);
       userData.dateTo = inputDateTo.value;
+      console.log(userData.dateTo);
       priceContainer.forEach((el) => {
         el.innerHTML = `${this.hotel.price * userData.noOfPeople * days} ${
           this.hotel.currency} /night`

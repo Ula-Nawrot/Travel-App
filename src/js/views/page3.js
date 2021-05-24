@@ -24,7 +24,7 @@ export default class Page3 extends View {
       formPage.classList.remove("hidden");
       choosingHotel.classList.add("hidden");
       //pobranie danych z local Storage po reload of the page
-      formPage.onload = this.retrieveDataFromLocalStorage();
+      //formPage.onload = this.retrieveDataFromLocalStorage();
 
       //4.Przypisanie danych hotelu do formularza
       this.feelingForm(this.data, userData);
@@ -41,16 +41,16 @@ export default class Page3 extends View {
     const hotelCity = document.getElementById("form_hotel_city");
     const dateFrom = document.getElementById("form_data_from");
     const dateTo = document.getElementById("form_data_to");
-    const selectedDAteFrom = this.changeDate(userData.dateFrom);
-    const selectedDAteTo = this.changeDate(userData.dateTo);
+    const selectedDateFrom = this.changeDate(userData.dateFrom);
+    const selectedDateTo = this.changeDate(userData.dateTo);
     const noOfPeople = document.getElementById("form_people");
 
     hotelName.textContent = dataHotel[0].name;
     hotelCountry.textContent = userData.country;
     hotelCity.textContent = dataHotel[0].location.city;
 
-    dateFrom.textContent = `${selectedDAteFrom[0]}/${selectedDAteFrom[1]}/${selectedDAteFrom[2]}`;
-    dateTo.textContent = `${selectedDAteTo[0]}/${selectedDAteTo[1]}/${selectedDAteTo[2]}`;
+    dateFrom.textContent = `${selectedDateFrom[0]}/${selectedDateFrom[1]}/${selectedDateFrom[2]}`;
+    dateTo.textContent = `${selectedDateTo[0]}/${selectedDateTo[1]}/${selectedDateTo[2]}`;
 
     noOfPeople.textContent = userData.noOfPeople;
     console.log(hotelName.textContent);
