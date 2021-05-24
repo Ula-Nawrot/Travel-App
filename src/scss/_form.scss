@@ -1,8 +1,8 @@
-#page3 {
-  //@include centered-object;
-  //margin-left: 200px;
-  width: 100vw;
-}
+// #page3 {
+//   //@include centered-object;
+//   //margin-left: 200px;
+//   width: 100vw;
+// }
 #form {
   @include flex-row;
   width: 1200px;
@@ -158,4 +158,10 @@
     padding-top: 1.5rem;
     width: 100%;
   }
+}
+
+#confirm_msg{
+  color: red;
+  font-size: 1.6rem;
+  text-align: center;
 }

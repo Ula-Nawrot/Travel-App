@@ -3,6 +3,7 @@ import { userData } from "./views/page1";
 import Page2 from "./views/page2";
 import Page1 from "./views/page1.js";
 import Page3 from "./views/page3.js";
+import Confirm_Msg from "./views/confirm_msg.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { async } from "regenerator-runtime";
@@ -34,23 +35,21 @@ import "../images/add_sign.svg";
 ///////////////Selecting DOM elements/////////////////////
 //const searchButton = document.querySelector(".search__btn");
 const searchButton = document.querySelector(".search__btn");
+const confirmButton = document.getElementById("confirm");
 const arrowBackPage2 = document.querySelector(".arrow_back_page2");
 const choosingHotel = document.getElementById("choosingHotel");
 const choosingCountry = document.getElementById("choosingCountry");
-const form = document.getElementById('form');
+const form = document.getElementById("form");
 const bookButton = document.querySelector(".book");
-
-localStorage.clear();
 
 async function gettingData() {
   try {
     const dataApi = await hotelsAPI();
 
-    
     const page1 = new Page1();
     const page2 = new Page2();
     const page3 = new Page3();
-    
+    const confirmation = new Confirm_Msg();
 
     page1.renderFunctions();
     //console.log(userData);
@@ -65,22 +64,30 @@ async function gettingData() {
         page2.renderFunctions(dataApi);
         page3.bookButton(dataApi, userData);
         console.log(userData);
-        
       }
     });
 
-    
+    confirmButton.onclick = (e) => {
+      e.preventDefault();
+      const errorMsg = document.getElementById("confirm_msg");
+      if (document.body.contains(errorMsg)) {
+        errorMsg.textContent = "";
+      }
+      confirmation.renderFunctions();
+      //console.log("kliknąłeś przycisk potwierdzający");
+    };
+
     // console.log(document.body.contains(bookButton));
     // if(bookButton){
     //   form.bookButton(dataApi);
-      
+
     // }
     // if (choosingHotel) {
     //   arrowBackPage2.addEventListener("click", function(){
     //     //page1.render(dataApi)
     //     console.log('click');
     //   });
-    
+
     //back to page 1
     //arrowBackPage2.addEventListener("click",page1.render(dataApi))
   } catch (err) {
@@ -89,5 +96,3 @@ async function gettingData() {
 }
 
 gettingData();
-
-
