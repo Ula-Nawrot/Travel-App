@@ -23,6 +23,7 @@ import "../images/photo_nav@2x.png";
 import "../images/arrow_back.svg";
 import "../images/stars_1.svg";
 import "../images/add_sign.svg";
+import View from "./views/View.js";
 
 // function importAll(r) {
 //     return r.keys().map(r);
@@ -39,23 +40,29 @@ const confirmButton = document.getElementById("confirm");
 const arrowBackPage2 = document.querySelector(".arrow_back_page2");
 const choosingHotel = document.getElementById("choosingHotel");
 const choosingCountry = document.getElementById("choosingCountry");
+const inputCountry = document.querySelector(".search__field");
 const form = document.getElementById("form");
 const bookButton = document.querySelector(".book");
 
-async function gettingData() {
+const page1 = new Page1();
+const page2 = new Page2();
+const page3 = new Page3();
+const view = new View();
+const confirmation = new Confirm_Msg();
+
+localStorage.clear();
+page1.renderFunctions();
+
+inputCountry.onchange = ()=>{
+const country = view.inputCountry();
+  gettingData(country);
+}
+
+async function gettingData(country) {
   try {
-    const dataApi = await hotelsAPI('Germany');
+    const dataApi = await hotelsAPI(country);
     console.log(dataApi);
 
-    const page1 = new Page1();
-    const page2 = new Page2();
-    const page3 = new Page3();
-    const confirmation = new Confirm_Msg();
-    localStorage.clear();
-    page1.renderFunctions();
-    //console.log(userData);
-    // const formPage = document.getElementById("form");
-    // formPage.classList.add("hidden");
     searchButton.addEventListener("click", function (e) {
       e.preventDefault();
       //1. Reading input values
@@ -74,7 +81,7 @@ async function gettingData() {
       const totalPrice = page3.priceCalc(dataApi.Poland, userData);
       console.log("to jest całkowita kwota do zapłaty:" + totalPrice);
       confirmation.renderFunctions();
-      console.log('co zwraca methoda'+confirmation.ValidatePayment());
+      console.log("co zwraca methoda" + confirmation.ValidatePayment());
 
       //console.log("kliknąłeś przycisk potwierdzający");
       if (
@@ -87,14 +94,12 @@ async function gettingData() {
       }
     };
 
-    // console.log(document.body.contains(bookButton));
-    // if(bookButton){
-    //   form.bookButton(dataApi);
-
-    // }
+    
   } catch (err) {
     alert(err);
   }
 }
 
-gettingData();
+
+
+

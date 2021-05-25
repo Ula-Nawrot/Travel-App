@@ -68,6 +68,7 @@ export default class View {
     const inputDateFrom = document.querySelector(".search__date_from");
     const inputDateTo = document.querySelector(".search__date_to");
     const inputPeople = document.querySelector("#people");
+    
     signBack.forEach((item, i) =>
       item.addEventListener("click", function () {
         if (i === 0) {
@@ -77,6 +78,7 @@ export default class View {
           inputDateFrom.value = "";
           inputDateTo.value = "";
           inputPeople.value = "";
+          
         }
         if (i === 1) {
           feelingForm.classList.add("hidden");
