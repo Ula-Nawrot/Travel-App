@@ -7,6 +7,7 @@ export default class Confirm_Msg extends View {
   renderFunctions() {
     this.ValidateEmail();
     this.ValidateSurname();
+    this.ValidatePayment();
     this.closeConfirmMsg();
     //this.showConfirmation();
   }
@@ -45,6 +46,30 @@ export default class Confirm_Msg extends View {
         "error_msg_email"
       );
     }
+  }
+  ValidatePayment() {
+    this.clearErrorDiv("error_msg_payment");
+    const payment_methods = document.getElementsByName("payment_method");
+    const isChecked = [];
+    for (var i = 0; i < payment_methods.length; i++) {
+      if (payment_methods[i].checked) {
+        isChecked[i] = true;
+      } else {
+        isChecked[i] = false;
+      }
+    }
+    if (isChecked.some((payment) => payment == true)) {
+      return true;
+    } else {
+      this.showErrorMessage(
+        "You have not selected a payment method!",
+        "error_msg_payment"
+      );
+    }
+    // isChecked.some((payment) => payment == true) ? true : this.showErrorMessage(
+    //     "You have not selected a payment method!",
+    //     "error_msg_payment"
+    //   );
   }
 
   showErrorMessage(msg, id) {
@@ -108,8 +133,5 @@ export default class Confirm_Msg extends View {
     inputPeople.value = "";
 
     localStorage.clear();
-    
   }
 }
-
-

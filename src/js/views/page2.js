@@ -24,7 +24,7 @@ export default class Page2 extends View {
     inputPeople.value = `${userData.noOfPeople}`;
   }
   showHotels(data) {
-    this.data = data.Poland;
+    this.data = data.Germany;
     const hotelContainer = document.querySelector(".hotels");
     const markup = this.data.map(this.generateMarkupHotel).join("");
     hotelContainer.insertAdjacentHTML("afterbegin", markup);

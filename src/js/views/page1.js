@@ -39,18 +39,18 @@ export default class Page1 extends View {
     const inputDateFrom = document.querySelector(".search__date_from");
     const inputDateTo = document.querySelector(".search__date_to");
     const conditionsArray = [
-      inputCountry.value != "Poland",
       inputCountry.value != "Germany",
+      inputCountry.value != "Poland",
       inputCountry.value != "Austria",
-      inputCountry.value != "Belgium",
       inputCountry.value != "Croatia",
+      inputCountry.value != "Netherland",
       inputCountry.value != "Italy",
       inputCountry.value != undefined,
       inputCountry.value != "",
     ];
     if (conditionsArray.every((cond) => cond == true)) {
       alert(
-        "The application is under development. The following countries are available: Poland, Germany, Austria, Belgium, Croatia, Italy."
+        "The application is under development. The following countries are available: Poland, Germany, Austria, Netherland, Croatia, Italy."
       );
       return false;
     } else if (
@@ -65,15 +65,12 @@ export default class Page1 extends View {
       return true;
     } else {
       alert(
-        "You must select a country. Enter one of the following countries: Poland, Germany, Austria, Belgium, Croatia, Italy."
+        "You must select a country. Enter one of the following countries: Poland, Germany, Austria, Netherland, Croatia, Italy."
       );
       return false;
     }
   }
-  searchButton(renderedpage){
-    const searchButton = document.querySelector(".search__btn");
-    
-  }
+  
   inputRecommendedCountry() {
     const countries = document.querySelector(".countries");
     const inputCountry = document.querySelector(".search__field");
@@ -85,8 +82,8 @@ export default class Page1 extends View {
         case `germany`:
           inputCountry.value = "Germany";
           break;
-        case `belgium`:
-          inputCountry.value = "Belgium";
+        case `poland`:
+          inputCountry.value = "Poland";
           break;
         case `austria`:
           inputCountry.value = "Austria";

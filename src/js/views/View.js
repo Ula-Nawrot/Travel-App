@@ -9,8 +9,14 @@ export default class View {
       "We could not find that recipe. Please try another one!";
     this.dataFrom;
     this.dataTo;
+    
 
     //console.log(this.data.Poland);
+  }
+
+  inputCountry(){
+    const inputCountry = document.querySelector(".search__field");
+    return inputCountry.value;
   }
 
   inputDates() {

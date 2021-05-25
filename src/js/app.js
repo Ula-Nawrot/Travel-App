@@ -13,7 +13,7 @@ import "../images/search_icon.png";
 import "../images/icon_search.svg";
 import "../images/white_search_icon.svg";
 import "../images/cochem_germany.jpg";
-import "../images/dinant_belgium.jpg";
+import "../images/poland_gdansk.jpg";
 import "../images/hallstatt_austria.jpg";
 import "../images/venice_italy.jpg";
 import "../images/netherland.jpg";
@@ -44,13 +44,14 @@ const bookButton = document.querySelector(".book");
 
 async function gettingData() {
   try {
-    const dataApi = await hotelsAPI();
+    const dataApi = await hotelsAPI('Germany');
+    console.log(dataApi);
 
     const page1 = new Page1();
     const page2 = new Page2();
     const page3 = new Page3();
     const confirmation = new Confirm_Msg();
-
+    localStorage.clear();
     page1.renderFunctions();
     //console.log(userData);
     // const formPage = document.getElementById("form");
@@ -67,19 +68,23 @@ async function gettingData() {
       }
     });
 
-    
-
     confirmButton.onclick = (e) => {
       e.preventDefault();
-      
-      
+
+      const totalPrice = page3.priceCalc(dataApi.Poland, userData);
+      console.log("to jest całkowita kwota do zapłaty:" + totalPrice);
       confirmation.renderFunctions();
-      
+      console.log('co zwraca methoda'+confirmation.ValidatePayment());
+
       //console.log("kliknąłeś przycisk potwierdzający");
-      if(confirmation.ValidateEmail()==true && confirmation.ValidateSurname()==true){
-        console.log('email i nazwisko jest poprawny');
+      if (
+        confirmation.ValidateEmail() == true &&
+        confirmation.ValidateSurname() == true &&
+        confirmation.ValidatePayment() == true
+      ) {
+        console.log("email i nazwisko jest poprawny");
         confirmation.showConfirmation();
-    }
+      }
     };
 
     // console.log(document.body.contains(bookButton));
@@ -87,7 +92,6 @@ async function gettingData() {
     //   form.bookButton(dataApi);
 
     // }
-    
   } catch (err) {
     alert(err);
   }

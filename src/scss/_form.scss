@@ -9,7 +9,7 @@
   background-color: $secondBackground;
   padding: 3rem 0;
   font-size: 1rem;
-  margin:auto;
+  margin: auto;
   box-sizing: border-box;
   @media (max-width: 1200px) {
     width: 940px;
@@ -75,7 +75,10 @@
     margin-bottom: 14px;
     padding-left: 0;
   }
-  #form_hotel_country, #form_hotel_city, #form_data_from, #form_data_to {
+  #form_hotel_country,
+  #form_hotel_city,
+  #form_data_from,
+  #form_data_to {
     padding-left: 10px;
   }
 
@@ -84,7 +87,7 @@
   }
   .two_columns {
     @include flex-row;
-    .reservation_data{
+    .reservation_data {
       @include flex-row;
       width: 40%;
       @media (max-width: 576px) {
@@ -106,7 +109,7 @@
   p {
     margin: 10px 0;
   }
-  #form_people{
+  #form_people {
     display: inline-block;
   }
   .options {
@@ -118,8 +121,6 @@
     div {
       @include centered-object-row;
       margin-bottom: 10px;
-
-      
 
       label {
         width: 150px;
@@ -148,7 +149,7 @@
 
   .inputs {
     margin-top: 10px;
-    
+
     input,
     label {
       margin-bottom: 10px;
@@ -162,7 +163,9 @@
   }
 }
 
-#error_msg_name, #error_msg_email {
+#error_msg_name,
+#error_msg_email,
+#error_msg_payment {
   color: red;
   font-size: 1.6rem;
   text-align: center;

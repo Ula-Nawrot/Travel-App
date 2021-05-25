@@ -1,13 +1,15 @@
 import { async } from "regenerator-runtime";
 //const axios = require("axios");
-//const BASE_API_URL = `https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels`;
+const BASE_API_URL = `https://quiet-forest-42003.herokuapp.com/api/hotels/all?country=`;
 
-export const hotelsAPI = async function () {
+export const hotelsAPI = async function (country) {
   try{
-    const res = await fetch(`https://us-central1-hotelsapi-311419.cloudfunctions.net/api/hotels`);
+    console.log(`${BASE_API_URL}${country}`);
+    const res = await fetch(`${BASE_API_URL}${country}`);
     const data = await res.json();
+    
     return data;
-    //console.log(res,data);
+    //return data[country];
     if(!res.ok) throw new Error (`${data.message}`)
   }
   catch (err){

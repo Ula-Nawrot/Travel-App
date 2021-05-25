@@ -8,7 +8,6 @@ export default class Page3 extends View {
   }
   //btn_book
   bookButton(data, userData) {
-    
     this.data = data.Poland;
     const hotelID = this.data.map((hotel) => {
       return hotel.id;
@@ -32,7 +31,7 @@ export default class Page3 extends View {
       this.priceCalc(this.data, userData);
       this.arrowBack();
       this.loadMap(this.data);
-      this.saveInLocalStorage();
+      this.saveInLocalStorage(this.data);
     };
   }
   feelingForm(dataHotel, userData) {
@@ -87,6 +86,8 @@ export default class Page3 extends View {
         products[i].onclick = updateCost;
       }
     }
+
+    return totalAmount;
     ///////////////////////////////////////////////////////////
 
     function updateCost(e) {
@@ -134,7 +135,7 @@ export default class Page3 extends View {
       .bindPopup(data[0].name)
       .openPopup();
   }
-  saveInLocalStorage() {
+  saveInLocalStorage(data) {
     const inputContainer = document.getElementById("form");
 
     inputContainer.onchange = () => {
@@ -143,6 +144,9 @@ export default class Page3 extends View {
       const parking = document.getElementById("checkboxParking");
       const surname = document.getElementById("surname");
       const email = document.getElementById("email");
+      const hotelName = data[0].name;
+      
+      console.log('nazwa hotelu:'+ hotelName);
 
       const formDataToSave = {
         breakfast: breakfast.checked,
@@ -150,8 +154,11 @@ export default class Page3 extends View {
         parking: parking.checked,
         surname: surname.value,
         email: email.value,
+        hotel: hotelName,
       };
       localStorage.setItem("formDataToSave", JSON.stringify(formDataToSave));
+
+      
     };
   }
   retrieveDataFromLocalStorage() {
