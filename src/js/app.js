@@ -67,14 +67,19 @@ async function gettingData() {
       }
     });
 
+    
+
     confirmButton.onclick = (e) => {
       e.preventDefault();
-      const errorMsg = document.getElementById("confirm_msg");
-      if (document.body.contains(errorMsg)) {
-        errorMsg.textContent = "";
-      }
+      
+      
       confirmation.renderFunctions();
+      
       //console.log("kliknąłeś przycisk potwierdzający");
+      if(confirmation.ValidateEmail()==true && confirmation.ValidateSurname()==true){
+        console.log('email i nazwisko jest poprawny');
+        confirmation.showConfirmation();
+    }
     };
 
     // console.log(document.body.contains(bookButton));
@@ -82,14 +87,7 @@ async function gettingData() {
     //   form.bookButton(dataApi);
 
     // }
-    // if (choosingHotel) {
-    //   arrowBackPage2.addEventListener("click", function(){
-    //     //page1.render(dataApi)
-    //     console.log('click');
-    //   });
-
-    //back to page 1
-    //arrowBackPage2.addEventListener("click",page1.render(dataApi))
+    
   } catch (err) {
     alert(err);
   }

@@ -143,7 +143,6 @@ export default class Page3 extends View {
       const parking = document.getElementById("checkboxParking");
       const surname = document.getElementById("surname");
       const email = document.getElementById("email");
-      console.log(breakfast.checked);
 
       const formDataToSave = {
         breakfast: breakfast.checked,

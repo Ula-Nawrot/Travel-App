@@ -54,7 +54,7 @@ export default class View {
   }
 
   arrowBack() {
-    const arrowBackPage2 = document.querySelectorAll(".arrow");
+    const signBack = document.querySelectorAll(".arrow");
     const choosingHotel = document.getElementById("choosingHotel");
     const choosingCountry = document.getElementById("choosingCountry");
     const feelingForm = document.getElementById("feelingForm");
@@ -62,7 +62,7 @@ export default class View {
     const inputDateFrom = document.querySelector(".search__date_from");
     const inputDateTo = document.querySelector(".search__date_to");
     const inputPeople = document.querySelector("#people");
-    arrowBackPage2.forEach((item, i) =>
+    signBack.forEach((item, i) =>
       item.addEventListener("click", function () {
         if (i === 0) {
           choosingHotel.classList.add("hidden");
