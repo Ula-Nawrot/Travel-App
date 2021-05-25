@@ -1,24 +1,30 @@
-.confirm_msg {
+#confirm_msg {
   @extend .container;
   height: 100vh;
-  
+  position: absolute;
+  box-sizing: border-box;
+  @media (max-width: 578px) {
+    height: 100%;
+  }
+
   .overlay {
-    position: fixed;
+    position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.459);
     backdrop-filter: blur(3px);
-    z-index: 1;
+    z-index: 5;
   }
-  
 }
-.modal {
+
+#modal {
   @include centered-object;
+  //position: absolute;
   background-color: $secondBackground;
   width: 60%;
   padding-bottom: 2rem;
   border-radius: $imgBorderRadius;
-  z-index: 2;
+  z-index: 10;
   @media (max-width: 1200px) {
     width: 80%;
   }
@@ -31,8 +37,10 @@
     cursor: pointer;
     border: none;
     background: none;
+    outline-style:none;
     outline: none;
   }
+  
   img {
     border-radius: $imgBorderRadius;
     width: 30%;
@@ -59,7 +67,11 @@
   }
 }
 
-// .hidden {
-//   display: none;
+// .overlay {
+//   position: absolute;
+//   width: 100vw;
+//   height: 100vh;
+//   background-color: rgba(0, 0, 0, 0.459);
+//   backdrop-filter: blur(3px);
+//   z-index: 5;
 // }
-

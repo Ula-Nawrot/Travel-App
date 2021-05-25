@@ -7,6 +7,7 @@ export default class Confirm_Msg extends View {
   renderFunctions() {
     this.ValidateEmail();
     this.ValidateSurname();
+    this.closeConfirmMsg();
     //this.showConfirmation();
   }
   ValidateSurname() {
@@ -14,13 +15,14 @@ export default class Confirm_Msg extends View {
     const name = document.getElementById("surname").value;
 
     if (name == "" || name == null) {
-      
-      this.showErrorMessage("Please enter First Name & Last Name","error_msg_name");
+      this.showErrorMessage(
+        "Please enter First Name & Last Name",
+        "error_msg_name"
+      );
     } else if (
       (name.indexOf(" ") > 0 && name.indexOf(" ") == name.length - 1) ||
       name.indexOf(" ") == -1
     ) {
-      
       this.showErrorMessage("Please enter Last Name!", "error_msg_name");
     } else {
       return true;
@@ -33,11 +35,15 @@ export default class Confirm_Msg extends View {
     if (inputEmail.value.match(mailformat)) {
       return true;
     } else if (inputEmail.value === "") {
-      
-      this.showErrorMessage("You did not provide an email address!","error_msg_email");
+      this.showErrorMessage(
+        "You did not provide an email address!",
+        "error_msg_email"
+      );
     } else {
-      
-      this.showErrorMessage("You have entered an invalid email address!", "error_msg_email");
+      this.showErrorMessage(
+        "You have entered an invalid email address!",
+        "error_msg_email"
+      );
     }
   }
 
@@ -52,9 +58,12 @@ export default class Confirm_Msg extends View {
   showConfirmation() {
     const form = document.getElementById("feelingForm");
     const confirm_msg = document.getElementById("confirm_msg");
+    // const confirm_window = document.getElementById("modal");
+
     const overlay = document.querySelector(".overlay");
-    form.classList.add("hidden");
+    //form.classList.add("hidden");
     confirm_msg.classList.remove("hidden");
+    //confirm_window.classList.remove("hidden");
     overlay.classList.remove("hidden");
   }
   clearErrorDiv(id) {
@@ -63,7 +72,44 @@ export default class Confirm_Msg extends View {
       errorMsg.remove();
     }
   }
+  closeConfirmMsg() {
+    const btnCloseModal = document.querySelector(".close-modal");
+    const overlay = document.querySelector(".overlay");
+    const modal = document.querySelector("#confirm_msg");
+    btnCloseModal.onclick = () => {
+      this.closeModal();
+    };
+    overlay.onclick = () => {
+      this.closeModal();
+    };
+    document.onkeydown = function (e) {
+      if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+        Confirm_Msg.prototype.closeModal();
+      }
+    };
+  }
+  closeModal() {
+    const modal = document.querySelector("#confirm_msg");
+    const choosingCountry = document.getElementById("choosingCountry");
+    const formPage = document.getElementById("feelingForm");
+
+    const inputCountry = document.querySelector(".search__field");
+    const inputDateFrom = document.querySelector(".search__date_from");
+    const inputDateTo = document.querySelector(".search__date_to");
+    const inputPeople = document.querySelector("#people");
+
+    modal.classList.add("hidden");
+    formPage.classList.add("hidden");
+    choosingCountry.classList.remove("hidden");
+
+    inputCountry.value = "";
+    inputDateFrom.value = "";
+    inputDateTo.value = "";
+    inputPeople.value = "";
+
+    localStorage.clear();
+    
+  }
 }
 
-//if everything is fine clear local storage
-//localStorage.clear();
+
