@@ -62,7 +62,7 @@ inputCountry.onchange = (e) => {
 async function chooseCountry(country) {
   try {
     const dataHotel = await hotelsAPI(country);
-
+    console.log(dataHotel);
     searchButton.onclick = (e) => {
       e.preventDefault();
 
@@ -81,6 +81,7 @@ async function chooseCountry(country) {
 async function feelingForm(country) {
   try {
     const dataHotel = await hotelsAPI(country);
+    
 
     confirmButton.onclick = (e) => {
       e.preventDefault();

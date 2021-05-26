@@ -34,9 +34,10 @@ export default class Page2 extends View {
   generateMarkupHotel(hotel) {
     userData;
     const days = View.prototype.diffBetweenDates3(userData);
+    
 
     return `<div class="city">
-    <img src="./images/cochem_germany.jpg" />
+    <img src="${hotel.photos[0].base64}" />
     <div class="hotel">
       <p class="hotel_name">${hotel.name} </p>
       <img src="./images/stars_1.svg" alt="one star" class="stars"/>

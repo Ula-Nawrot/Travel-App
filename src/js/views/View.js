@@ -120,9 +120,9 @@ export default class View {
     return differenceInDays;
   }
   convertImage(dataHotel) {
-    // const image = new Image();
-    // image.src = dataHotel.images[0];
-    // return image.src;
+    const image = new Image();
+    image.src = dataHotel.photos[0];
+    return image.src;
     //document.body.appendChild(image);
   }
 }

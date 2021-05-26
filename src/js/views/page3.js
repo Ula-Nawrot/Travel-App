@@ -11,9 +11,7 @@ export default class Page3 extends View {
   
   bookButton(data, userData) {
     this.data = data;
-    const hotelID = this.data.map((hotel) => {
-      return hotel.id;
-    });
+    
     //Przypisz eventListener do buttona
     const formPage = document.getElementById("feelingForm");
     const bookButtons = document.querySelectorAll(".book");
@@ -30,7 +28,7 @@ export default class Page3 extends View {
         this.priceCalc(this.data[i], userData);
         this.arrowBack();
         this.loadMap(this.data[i]);
-        this.saveInLocalStorage(this.data[i],userData);
+        this.saveInLocalStorage(this.data[i],i);
       };
     }
   }
@@ -43,6 +41,7 @@ export default class Page3 extends View {
     const selectedDateFrom = this.changeDate(userData.dateFrom);
     const selectedDateTo = this.changeDate(userData.dateTo);
     const noOfPeople = document.getElementById("form_people");
+    const hotelImage = document.getElementById('hotel_image');
 
     const confirmButton = document.getElementById("confirm");
     confirmButton.setAttribute('data-index', i)
@@ -50,7 +49,7 @@ export default class Page3 extends View {
     hotelName.textContent = dataHotel.name;
     hotelCountry.textContent = userData.country;
     hotelCity.textContent = dataHotel.location.city;
-
+    hotelImage.setAttribute('src',dataHotel.photos[0].base64);
     dateFrom.textContent = `${selectedDateFrom[0]}/${selectedDateFrom[1]}/${selectedDateFrom[2]}`;
     dateTo.textContent = `${selectedDateTo[0]}/${selectedDateTo[1]}/${selectedDateTo[2]}`;
 
@@ -147,7 +146,7 @@ export default class Page3 extends View {
       .bindPopup(data.name)
       .openPopup();
   }
-  saveInLocalStorage(data, userdata) {
+  saveInLocalStorage(data, i) {
     const inputContainer = document.getElementById("form");
 
     inputContainer.onchange = () => {
@@ -172,7 +171,8 @@ export default class Page3 extends View {
         totalPrice: price,
         mobilePayment: mobilePayment.checked,
         bankTransfer: bankTransfer.checked,
-        creditCard: creditCard.checked
+        creditCard: creditCard.checked,
+        hotelIndex: i
       };
       localStorage.setItem("formDataToSave", JSON.stringify(formDataToSave));
     };

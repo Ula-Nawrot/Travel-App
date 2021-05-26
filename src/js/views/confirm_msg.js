@@ -141,7 +141,7 @@ export default class Confirm_Msg extends View {
   generateMarkupHotel(dataHotel) {
     const retrievedData = JSON.parse(localStorage.getItem("formDataToSave"));
     //const days = View.prototype.diffBetweenDates3(userData);
-    const imageSrc = this.convertImage(dataHotel);
+    const index = retrievedData.hotelIndex;
     let paymentMathod = "";
     if (retrievedData.mobilePayment) {
       paymentMathod = "Mobile Payment";
@@ -156,7 +156,7 @@ export default class Confirm_Msg extends View {
     return `<div class="message">
     <b>Thank you</b> for booking at ${retrievedData.hotel} Hotel on our website! </br>
     The booking process was successfull! </br>
-    You have payed ${retrievedData.totalPrice} using ${paymentMathod}.</b> </div>
-    <img src="./images/cochem_germany.jpg" />`;
+    You have payed <b>${retrievedData.totalPrice} ${dataHotel[index].currency}</b> using ${paymentMathod}.</b> </div>
+    <img src="${dataHotel[index].photos[0].base64}" />`;
   }
 }
