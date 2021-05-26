@@ -15,9 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
     "core-js": "^3.11.0",
-    "leaflet": "^1.7.1",
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {

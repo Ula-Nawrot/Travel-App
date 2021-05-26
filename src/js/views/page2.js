@@ -34,7 +34,10 @@ export default class Page2 extends View {
   generateMarkupHotel(hotel) {
     userData;
     const days = View.prototype.diffBetweenDates3(userData);
-    
+    //<li>${hotel.facilities[0].name}</li>
+    const facilities = Object.values(hotel.facilities);
+
+    console.log();
 
     return `<div class="city">
     <img src="${hotel.photos[0].base64}" />
@@ -42,17 +45,18 @@ export default class Page2 extends View {
       <p class="hotel_name">${hotel.name} </p>
       <img src="./images/stars_1.svg" alt="one star" class="stars"/>
       <ul>
-        <li>${hotel.facilities[0].name}</li>
-        <li>Free WiFi internet</li>
-        <li>Free parking</li>
-        <li>Fitness center</li>
-        <li>Coffee Kit</li>
-        <li>Bathrobes and slippers</li>
+        
+        ${facilities.map(facility => {
+          console.log(facility.name);
+          return `<li>${facility.name}</li>`
+        }).join('')}
+        
       </ul>
     </div>
     <div class="booking">
         <div class="price">${hotel.price * userData.noOfPeople * days} ${
-      hotel.currency} /night</div>
+      hotel.currency
+    } /night</div>
         <button class="btn book">Book</button>
     </div>
   </div>`;
@@ -64,17 +68,18 @@ export default class Page2 extends View {
     const inputDateFrom = document.getElementById("from2");
     const inputDateTo = document.getElementById("to2");
     const priceContainer = containerPage2.querySelectorAll(".price");
-    
+
     containerPage2.onchange = () => {
       const days = View.prototype.diffBetweenDates3(userData);
-      console.log('number of days:'+ days);
+      console.log("number of days:" + days);
       userData.dateFrom = inputDateFrom.value;
       console.log(userData.dateFrom);
       userData.dateTo = inputDateTo.value;
       console.log(userData.dateTo);
       priceContainer.forEach((el) => {
         el.innerHTML = `${this.hotel.price * userData.noOfPeople * days} ${
-          this.hotel.currency} /night`
+          this.hotel.currency
+        } /night`;
         console.log(el.innerHTML);
       });
     };
