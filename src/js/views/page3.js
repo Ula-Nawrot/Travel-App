@@ -14,27 +14,29 @@ export default class Page3 extends View {
     });
     //Przypisz eventListener do buttona
     const formPage = document.getElementById("feelingForm");
-    const bookButton = document.querySelector(".book");
+    const bookButtons = document.querySelectorAll(".book");
     const choosingHotel = document.getElementById("choosingHotel");
 
-    bookButton.onclick = () => {
-      //3. Ukryj poprzednią stronę i pokaż formularz
+    for (let i = 0; i < bookButtons.length; i++) {
+      bookButtons[i].onclick = () => {
+        //3. Ukryj poprzednią stronę i pokaż formularz
 
-      formPage.classList.remove("hidden");
-      choosingHotel.classList.add("hidden");
-      //pobranie danych z local Storage po reload of the page
-      //formPage.onload = this.retrieveDataFromLocalStorage();
-
-      //4.Przypisanie danych hotelu do formularza
-      this.feelingForm(this.data, userData);
-      this.additionalOptions(this.data);
-      this.priceCalc(this.data, userData);
-      this.arrowBack();
-      this.loadMap(this.data);
-      this.saveInLocalStorage(this.data);
-    };
+        formPage.classList.remove("hidden");
+        choosingHotel.classList.add("hidden");
+        //pobranie danych z local Storage po reload of the page
+        //formPage.onload = this.retrieveDataFromLocalStorage();
+        console.log('co wyświetla na przycisk bookButton'+this.data);
+        //4.Przypisanie danych hotelu do formularza
+        this.feelingForm(this.data[i], userData, i);
+        this.additionalOptions(this.data[i]);
+        this.priceCalc(this.data[i], userData);
+        this.arrowBack();
+        this.loadMap(this.data[i]);
+        this.saveInLocalStorage(this.data[i]);
+      };
+    }
   }
-  feelingForm(dataHotel, userData) {
+  feelingForm(dataHotel, userData,i) {
     const hotelName = document.getElementById("form_hotel_name");
     const hotelCountry = document.getElementById("form_hotel_country");
     const hotelCity = document.getElementById("form_hotel_city");
@@ -44,9 +46,12 @@ export default class Page3 extends View {
     const selectedDateTo = this.changeDate(userData.dateTo);
     const noOfPeople = document.getElementById("form_people");
 
-    hotelName.textContent = dataHotel[0].name;
+    const confirmButton = document.getElementById("confirm");
+    confirmButton.setAttribute('data-index', i)
+
+    hotelName.textContent = dataHotel.name;
     hotelCountry.textContent = userData.country;
-    hotelCity.textContent = dataHotel[0].location.city;
+    hotelCity.textContent = dataHotel.location.city;
 
     dateFrom.textContent = `${selectedDateFrom[0]}/${selectedDateFrom[1]}/${selectedDateFrom[2]}`;
     dateTo.textContent = `${selectedDateTo[0]}/${selectedDateTo[1]}/${selectedDateTo[2]}`;
@@ -60,18 +65,19 @@ export default class Page3 extends View {
     const taxi = document.getElementById("taxi");
     const parking = document.getElementById("parking");
 
-    breakfast.textContent = `Breakfast - 10 ${datahotel[0].currency}/day`;
-    taxi.textContent = `Taxi to hotel - 50 ${datahotel[0].currency}`;
-    parking.textContent = `Parking - 5 ${datahotel[0].currency}/day`;
+    breakfast.textContent = `Breakfast - 10 ${datahotel.currency}/day`;
+    taxi.textContent = `Taxi to hotel - 50 ${datahotel.currency}`;
+    parking.textContent = `Parking - 5 ${datahotel.currency}/day`;
   }
   priceCalc(datahotel, dataUser) {
     const showPrice = document.getElementById("totalAmount");
     const dateFrom = document.getElementById("form_data_from");
     const dateTo = document.getElementById("form_data_to");
+    console.log('czemu nie chce wyświetlić ceny:' + datahotel);
 
     const dayAmount = this.diffBetweenDates3(dataUser);
-    const pricePerNight = datahotel[0].price;
-    const currency = datahotel[0].currency;
+    const pricePerNight = datahotel.price;
+    const currency = datahotel.currency;
     const people = dataUser.noOfPeople;
     let totalAmount = pricePerNight * dayAmount * people; // +optionPrice;
 
@@ -111,8 +117,8 @@ export default class Page3 extends View {
     }
   }
   loadMap(data) {
-    const latitude = data[0].location.latitude;
-    const longitude = data[0].location.longitude;
+    const latitude = data.location.latitude;
+    const longitude = data.location.longitude;
     console.log("latitude:" + latitude + " longitude: " + longitude);
     const map = L.map("map").setView([latitude, longitude], 10);
 
@@ -132,7 +138,7 @@ export default class Page3 extends View {
 
     L.marker([latitude, longitude])
       .addTo(map)
-      .bindPopup(data[0].name)
+      .bindPopup(data.name)
       .openPopup();
   }
   saveInLocalStorage(data) {
@@ -144,9 +150,8 @@ export default class Page3 extends View {
       const parking = document.getElementById("checkboxParking");
       const surname = document.getElementById("surname");
       const email = document.getElementById("email");
-      const hotelName = data[0].name;
-      
-      console.log('nazwa hotelu:'+ hotelName);
+      const hotelName = data.name;
+
 
       const formDataToSave = {
         breakfast: breakfast.checked,
@@ -157,8 +162,6 @@ export default class Page3 extends View {
         hotel: hotelName,
       };
       localStorage.setItem("formDataToSave", JSON.stringify(formDataToSave));
-
-      
     };
   }
   retrieveDataFromLocalStorage() {

@@ -32,12 +32,11 @@ import View from "./views/View.js";
 //   const images = importAll(require.context('./', false, /\.(png|jpe?g|svg)$/));
 //https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack
 
-/////////////////////////////////////////
 ///////////////Selecting DOM elements/////////////////////
-//const searchButton = document.querySelector(".search__btn");
+
 const searchButton = document.querySelector(".search__btn");
 const confirmButton = document.getElementById("confirm");
-const arrowBackPage2 = document.querySelector(".arrow_back_page2");
+
 const choosingHotel = document.getElementById("choosingHotel");
 const choosingCountry = document.getElementById("choosingCountry");
 const inputCountry = document.querySelector(".search__field");
@@ -60,21 +59,13 @@ inputCountry.onchange = (e) => {
   chooseCountry(country);
 };
 
-// imagesCountries.onclick = ()=>{
-//   setTimeout(() => {
-//     country = view.inputCountry();
-//     feelingForm(country);
-//   chooseCountry(country);
-//   }, 3000);
-// }
-
 async function chooseCountry(country) {
   try {
     const dataHotel = await hotelsAPI(country);
 
     searchButton.onclick = (e) => {
       e.preventDefault();
-      
+
       if (page1.inputCountryName() && page1.validationDates()) {
         choosingHotel.classList.remove("hidden");
         choosingCountry.classList.add("hidden");
@@ -87,20 +78,17 @@ async function chooseCountry(country) {
   }
 }
 
-async function feelingForm (country) {
+async function feelingForm(country) {
   try {
     const dataApi = await hotelsAPI(country);
-    console.log(dataApi);
 
     confirmButton.onclick = (e) => {
       e.preventDefault();
+      const index = confirmButton.getAttribute("data-index");
+      const totalPrice = page3.priceCalc(dataApi[index], userData);
 
-      const totalPrice = page3.priceCalc(dataApi.Poland, userData);
-      console.log("to jest całkowita kwota do zapłaty:" + totalPrice);
       confirmation.renderFunctions();
-      console.log("co zwraca methoda" + confirmation.ValidatePayment());
 
-      //console.log("kliknąłeś przycisk potwierdzający");
       if (
         confirmation.ValidateEmail() == true &&
         confirmation.ValidateSurname() == true &&
