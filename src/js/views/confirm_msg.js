@@ -80,9 +80,10 @@ export default class Confirm_Msg extends View {
     document.getElementById("confirmationContainer").appendChild(node);
     //console.log(document.getElementsByClassName("booking"));
   }
-  showConfirmation() {
+  showConfirmation(dataHotel) {
     const form = document.getElementById("feelingForm");
     const confirm_msg = document.getElementById("confirm_msg");
+    const modalWindow = document.getElementById('modal')
     // const confirm_window = document.getElementById("modal");
 
     const overlay = document.querySelector(".overlay");
@@ -90,6 +91,9 @@ export default class Confirm_Msg extends View {
     confirm_msg.classList.remove("hidden");
     //confirm_window.classList.remove("hidden");
     overlay.classList.remove("hidden");
+
+    const markup = this.generateMarkupHotel(dataHotel);
+    modalWindow.insertAdjacentHTML("beforeend", markup);
   }
   clearErrorDiv(id) {
     const errorMsg = document.getElementById(id);
@@ -133,5 +137,26 @@ export default class Confirm_Msg extends View {
     inputPeople.value = "";
 
     localStorage.clear();
+  }
+  generateMarkupHotel(dataHotel) {
+    const retrievedData = JSON.parse(localStorage.getItem("formDataToSave"));
+    //const days = View.prototype.diffBetweenDates3(userData);
+    const imageSrc = this.convertImage(dataHotel);
+    let paymentMathod = "";
+    if (retrievedData.mobilePayment) {
+      paymentMathod = "Mobile Payment";
+    }
+    if (retrievedData.bankTransfer) {
+      paymentMathod = "Bank Transfer";
+    }
+    if (retrievedData.creditCard) {
+      paymentMathod = "Credit Card";
+    }
+
+    return `<div class="message">
+    <b>Thank you</b> for booking at ${retrievedData.hotel} Hotel on our website! </br>
+    The booking process was successfull! </br>
+    You have payed ${retrievedData.totalPrice} using ${paymentMathod}.</b> </div>
+    <img src="./images/cochem_germany.jpg" />`;
   }
 }

@@ -80,12 +80,12 @@ async function chooseCountry(country) {
 
 async function feelingForm(country) {
   try {
-    const dataApi = await hotelsAPI(country);
+    const dataHotel = await hotelsAPI(country);
 
     confirmButton.onclick = (e) => {
       e.preventDefault();
       const index = confirmButton.getAttribute("data-index");
-      const totalPrice = page3.priceCalc(dataApi[index], userData);
+      const totalPrice = page3.priceCalc(dataHotel[index], userData);
 
       confirmation.renderFunctions();
 
@@ -95,7 +95,7 @@ async function feelingForm(country) {
         confirmation.ValidatePayment() == true
       ) {
         console.log("email i nazwisko jest poprawny");
-        confirmation.showConfirmation();
+        confirmation.showConfirmation(dataHotel);
       }
     };
   } catch (err) {
