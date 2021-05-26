@@ -8,7 +8,7 @@ export default class Page3 extends View {
   }
   //btn_book
   bookButton(data, userData) {
-    this.data = data.Poland;
+    this.data = data;
     const hotelID = this.data.map((hotel) => {
       return hotel.id;
     });

@@ -42,38 +42,47 @@ const choosingHotel = document.getElementById("choosingHotel");
 const choosingCountry = document.getElementById("choosingCountry");
 const inputCountry = document.querySelector(".search__field");
 const form = document.getElementById("form");
-const bookButton = document.querySelector(".book");
+const imagesCountries = document.querySelector(".countries");
 
 const page1 = new Page1();
 const page2 = new Page2();
 const page3 = new Page3();
 const view = new View();
 const confirmation = new Confirm_Msg();
+let country = {};
 
 localStorage.clear();
 page1.renderFunctions();
 
-inputCountry.onchange = ()=>{
-const country = view.inputCountry();
-  gettingData(country);
-}
+inputCountry.onchange = () => {
+  country = view.inputCountry();
+  feelingForm(country);
+  chooseCountry(country);
+};
 
-async function gettingData(country) {
+async function chooseCountry(country) {
   try {
-    const dataApi = await hotelsAPI(country);
-    console.log(dataApi);
+    const dataHotel = await hotelsAPI(country);
 
-    searchButton.addEventListener("click", function (e) {
+    searchButton.onclick = (e) => {
       e.preventDefault();
-      //1. Reading input values
+      
       if (page1.inputCountryName() && page1.validationDates()) {
         choosingHotel.classList.remove("hidden");
         choosingCountry.classList.add("hidden");
-        page2.renderFunctions(dataApi);
-        page3.bookButton(dataApi, userData);
-        console.log(userData);
+        page2.renderFunctions(dataHotel);
+        page3.bookButton(dataHotel, userData);
       }
-    });
+    };
+  } catch (err) {
+    alert(err);
+  }
+}
+
+async function feelingForm (country) {
+  try {
+    const dataApi = await hotelsAPI(country);
+    console.log(dataApi);
 
     confirmButton.onclick = (e) => {
       e.preventDefault();
@@ -93,13 +102,7 @@ async function gettingData(country) {
         confirmation.showConfirmation();
       }
     };
-
-    
   } catch (err) {
     alert(err);
   }
 }
-
-
-
-

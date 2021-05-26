@@ -1,5 +1,6 @@
 import View from "./View";
 import { userData } from "./page1.js";
+
 import { doc } from "prettier";
 
 export default class Page2 extends View {
@@ -57,7 +58,7 @@ export default class Page2 extends View {
   }
   updatePriceOfHotel(data) {
     userData;
-    this.hotel = data.Poland[0];
+    this.hotel = data;
     const containerPage2 = document.getElementById("choosingHotel");
     const inputDateFrom = document.getElementById("from2");
     const inputDateTo = document.getElementById("to2");
