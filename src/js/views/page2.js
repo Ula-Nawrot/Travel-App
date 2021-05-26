@@ -34,10 +34,7 @@ export default class Page2 extends View {
   generateMarkupHotel(hotel) {
     userData;
     const days = View.prototype.diffBetweenDates3(userData);
-    //<li>${hotel.facilities[0].name}</li>
     const facilities = Object.values(hotel.facilities);
-
-    console.log();
 
     return `<div class="city">
     <img src="${hotel.photos[0].base64}" />
@@ -45,18 +42,18 @@ export default class Page2 extends View {
       <p class="hotel_name">${hotel.name} </p>
       <img src="./images/stars_1.svg" alt="one star" class="stars"/>
       <ul>
-        
-        ${facilities.map(facility => {
-          console.log(facility.name);
-          return `<li>${facility.name}</li>`
-        }).join('')}
-        
+        ${facilities
+          .map((facility) => {
+            console.log(facility.name);
+            return `<li>${facility.name}</li>`;
+          })
+          .join("")}
       </ul>
     </div>
     <div class="booking">
         <div class="price">${hotel.price * userData.noOfPeople * days} ${
       hotel.currency
-    } /night</div>
+    }</div>
         <button class="btn book">Book</button>
     </div>
   </div>`;
