@@ -1,12 +1,14 @@
 import View from "./View";
 import { userData } from "./page1.js";
 import { doc } from "prettier";
+let price = null;
 
 export default class Page3 extends View {
   constructor() {
     super();
+    
   }
-  //btn_book
+  
   bookButton(data, userData) {
     this.data = data;
     const hotelID = this.data.map((hotel) => {
@@ -19,20 +21,16 @@ export default class Page3 extends View {
 
     for (let i = 0; i < bookButtons.length; i++) {
       bookButtons[i].onclick = () => {
-        //3. Ukryj poprzednią stronę i pokaż formularz
-
         formPage.classList.remove("hidden");
         choosingHotel.classList.add("hidden");
-        //pobranie danych z local Storage po reload of the page
-        //formPage.onload = this.retrieveDataFromLocalStorage();
-        console.log('co wyświetla na przycisk bookButton'+this.data);
-        //4.Przypisanie danych hotelu do formularza
+        
+        
         this.feelingForm(this.data[i], userData, i);
         this.additionalOptions(this.data[i]);
         this.priceCalc(this.data[i], userData);
         this.arrowBack();
         this.loadMap(this.data[i]);
-        this.saveInLocalStorage(this.data[i]);
+        this.saveInLocalStorage(this.data[i],userData);
       };
     }
   }
@@ -57,8 +55,7 @@ export default class Page3 extends View {
     dateTo.textContent = `${selectedDateTo[0]}/${selectedDateTo[1]}/${selectedDateTo[2]}`;
 
     noOfPeople.textContent = userData.noOfPeople;
-    console.log(hotelName.textContent);
-    console.log(dataHotel);
+   
   }
   additionalOptions(datahotel) {
     const breakfast = document.getElementById("breakfast");
@@ -73,7 +70,7 @@ export default class Page3 extends View {
     const showPrice = document.getElementById("totalAmount");
     const dateFrom = document.getElementById("form_data_from");
     const dateTo = document.getElementById("form_data_to");
-    console.log('czemu nie chce wyświetlić ceny:' + datahotel);
+    
 
     const dayAmount = this.diffBetweenDates3(dataUser);
     const pricePerNight = datahotel.price;
@@ -83,6 +80,7 @@ export default class Page3 extends View {
 
     showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
     showPrice.setAttribute("value", `${totalAmount}`);
+    
     /////////////////////////////////////////////////////
     const el = document.querySelector(".options");
     const products = el.getElementsByTagName("input");
@@ -90,10 +88,11 @@ export default class Page3 extends View {
     for (let i = 0; i < lenght; i++) {
       if (products[i].type === "checkbox") {
         products[i].onclick = updateCost;
+        
+        
       }
     }
-
-    return totalAmount;
+    
     ///////////////////////////////////////////////////////////
 
     function updateCost(e) {
@@ -101,17 +100,25 @@ export default class Page3 extends View {
         if (this.id == "checkboxTaxi") {
           totalAmount += parseFloat(this.value);
           showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
+          showPrice.setAttribute("value", `${totalAmount}`);
+          price = totalAmount;
         } else {
           totalAmount += parseFloat(this.value) * dayAmount;
           showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
+          showPrice.setAttribute("value", `${totalAmount}`);
+          price = totalAmount;
         }
       } else {
         if (this.id == "checkboxTaxi") {
           totalAmount -= parseFloat(this.value);
           showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
+          showPrice.setAttribute("value", `${totalAmount}`);
+          price = totalAmount;
         } else {
           totalAmount -= parseFloat(this.value) * dayAmount;
           showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
+          showPrice.setAttribute("value", `${totalAmount}`);
+          price = totalAmount;
         }
       }
     }
@@ -119,7 +126,6 @@ export default class Page3 extends View {
   loadMap(data) {
     const latitude = data.location.latitude;
     const longitude = data.location.longitude;
-    console.log("latitude:" + latitude + " longitude: " + longitude);
     const map = L.map("map").setView([latitude, longitude], 10);
 
     L.tileLayer(
@@ -141,7 +147,7 @@ export default class Page3 extends View {
       .bindPopup(data.name)
       .openPopup();
   }
-  saveInLocalStorage(data) {
+  saveInLocalStorage(data, userdata) {
     const inputContainer = document.getElementById("form");
 
     inputContainer.onchange = () => {
@@ -151,8 +157,9 @@ export default class Page3 extends View {
       const surname = document.getElementById("surname");
       const email = document.getElementById("email");
       const hotelName = data.name;
+      const totalPrice = document.getElementById("totalAmount");
 
-
+      
       const formDataToSave = {
         breakfast: breakfast.checked,
         taxi: taxi.checked,
@@ -160,11 +167,14 @@ export default class Page3 extends View {
         surname: surname.value,
         email: email.value,
         hotel: hotelName,
+        totalPrice: price
       };
       localStorage.setItem("formDataToSave", JSON.stringify(formDataToSave));
     };
+    
   }
   retrieveDataFromLocalStorage() {
+    //pobranie danych z local Storage po reload of the page
     const retrievedData = JSON.parse(localStorage.getItem("formDataToSave"));
     const breakfast = document.getElementById("checkboxBreakfast");
     const taxi = document.getElementById("checkboxTaxi");
