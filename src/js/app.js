@@ -54,11 +54,19 @@ let country = {};
 localStorage.clear();
 page1.renderFunctions();
 
-inputCountry.onchange = () => {
+inputCountry.onchange = (e) => {
   country = view.inputCountry();
   feelingForm(country);
   chooseCountry(country);
 };
+
+// imagesCountries.onclick = ()=>{
+//   setTimeout(() => {
+//     country = view.inputCountry();
+//     feelingForm(country);
+//   chooseCountry(country);
+//   }, 3000);
+// }
 
 async function chooseCountry(country) {
   try {

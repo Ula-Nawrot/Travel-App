@@ -74,6 +74,7 @@ export default class Page1 extends View {
   inputRecommendedCountry() {
     const countries = document.querySelector(".countries");
     const inputCountry = document.querySelector(".search__field");
+    let onchangeEvent = new Event('change');
     countries.onclick = function (e) {
       e.preventDefault();
 
@@ -81,23 +82,31 @@ export default class Page1 extends View {
       switch (countryButton.id) {
         case `germany`:
           inputCountry.value = "Germany";
+          inputCountry.dispatchEvent(onchangeEvent);
           break;
         case `poland`:
           inputCountry.value = "Poland";
+          inputCountry.dispatchEvent(onchangeEvent);
           break;
         case `austria`:
           inputCountry.value = "Austria";
+          inputCountry.dispatchEvent(onchangeEvent);
           break;
         case `italy`:
           inputCountry.value = "Italy";
+          inputCountry.dispatchEvent(onchangeEvent);
           break;
         case `croatia`:
           inputCountry.value = "Croatia";
+          inputCountry.dispatchEvent(onchangeEvent);
           break;
         case `netherland`:
           inputCountry.value = "Netherland";
+          inputCountry.dispatchEvent(onchangeEvent);
           break;
       }
+      
+      
     };
   }
   
