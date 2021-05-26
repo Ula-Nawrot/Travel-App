@@ -157,7 +157,9 @@ export default class Page3 extends View {
       const surname = document.getElementById("surname");
       const email = document.getElementById("email");
       const hotelName = data.name;
-      const totalPrice = document.getElementById("totalAmount");
+      const mobilePayment = document.getElementById('mobile_payment');
+      const bankTransfer = document.getElementById('bank_transfer');
+      const creditCard = document.getElementById('credit_card')
 
       
       const formDataToSave = {
@@ -167,7 +169,10 @@ export default class Page3 extends View {
         surname: surname.value,
         email: email.value,
         hotel: hotelName,
-        totalPrice: price
+        totalPrice: price,
+        mobilePayment: mobilePayment.checked,
+        bankTransfer: bankTransfer.checked,
+        creditCard: creditCard.checked
       };
       localStorage.setItem("formDataToSave", JSON.stringify(formDataToSave));
     };
