@@ -9,7 +9,6 @@ export default class Confirm_Msg extends View {
     this.ValidateSurname();
     this.ValidatePayment();
     this.closeConfirmMsg();
-    //this.showConfirmation();
   }
   ValidateSurname() {
     this.clearErrorDiv("error_msg_name");
@@ -66,10 +65,6 @@ export default class Confirm_Msg extends View {
         "error_msg_payment"
       );
     }
-    // isChecked.some((payment) => payment == true) ? true : this.showErrorMessage(
-    //     "You have not selected a payment method!",
-    //     "error_msg_payment"
-    //   );
   }
 
   showErrorMessage(msg, id) {
@@ -78,18 +73,12 @@ export default class Confirm_Msg extends View {
     const textnode = document.createTextNode(`${msg}`);
     node.appendChild(textnode);
     document.getElementById("confirmationContainer").appendChild(node);
-    //console.log(document.getElementsByClassName("booking"));
   }
   showConfirmation(dataHotel) {
-    const form = document.getElementById("feelingForm");
     const confirm_msg = document.getElementById("confirm_msg");
     const modalWindow = document.getElementById('modal')
-    // const confirm_window = document.getElementById("modal");
-
     const overlay = document.querySelector(".overlay");
-    //form.classList.add("hidden");
     confirm_msg.classList.remove("hidden");
-    //confirm_window.classList.remove("hidden");
     overlay.classList.remove("hidden");
 
     const markup = this.generateMarkupHotel(dataHotel);
@@ -121,7 +110,6 @@ export default class Confirm_Msg extends View {
     const modal = document.querySelector("#confirm_msg");
     const choosingCountry = document.getElementById("choosingCountry");
     const formPage = document.getElementById("feelingForm");
-
     const inputCountry = document.querySelector(".search__field");
     const inputDateFrom = document.querySelector(".search__date_from");
     const inputDateTo = document.querySelector(".search__date_to");
@@ -134,7 +122,7 @@ export default class Confirm_Msg extends View {
     inputCountry.value = "";
     inputDateFrom.value = "";
     inputDateTo.value = "";
-    inputPeople.value = "";
+    inputPeople.value = "1";
 
     localStorage.clear();
   }
@@ -142,6 +130,7 @@ export default class Confirm_Msg extends View {
     const retrievedData = JSON.parse(localStorage.getItem("formDataToSave"));
     const index = retrievedData.hotelIndex;
     let paymentMathod = "";
+
     if (retrievedData.mobilePayment) {
       paymentMathod = "Mobile Payment";
     }
@@ -153,7 +142,7 @@ export default class Confirm_Msg extends View {
     }
 
     return `<div class="message">
-    <b>Thank you</b> for booking at ${retrievedData.hotel} Hotel on our website! </br>
+    <b>Thank you</b> for booking at ${retrievedData.hotel} on our website! </br>
     The booking process was successfull! </br>
     You have payed <b>${retrievedData.totalPrice} ${dataHotel[index].currency}</b> using ${paymentMathod}.</b> </div>
     <img src="${dataHotel[index].photos[0].base64}" />`;
