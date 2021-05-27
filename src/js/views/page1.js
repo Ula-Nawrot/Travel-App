@@ -22,13 +22,21 @@ export default class Page1 extends View {
     this.inputDates();
     this.diffBetweenDates();
   }
-  
 
   validationDates() {
     const inputDateFrom = document.querySelector(".search__date_from");
     const inputDateTo = document.querySelector(".search__date_to");
     if (inputDateFrom.value == "" || inputDateTo.value == "") {
       alert("Please select the date of your stay");
+      return false;
+    } else {
+      return true;
+    }
+  }
+  validationPeople() {
+    const numberOfPeople = document.getElementById("people");
+    if (numberOfPeople.value == "") {
+      alert("Please select number of people you want to go with");
       return false;
     } else {
       return true;
@@ -53,10 +61,7 @@ export default class Page1 extends View {
         "The application is under development. The following countries are available: Poland, Germany, Austria, Netherland, Croatia, Italy."
       );
       return false;
-    } else if (
-      inputCountry.value != undefined &&
-      inputCountry.value != ""
-    ) {
+    } else if (inputCountry.value != undefined && inputCountry.value != "") {
       userData.country = inputCountry.value;
       userData.dateFrom = inputDateFrom.value;
       userData.dateTo = inputDateTo.value;
@@ -70,11 +75,11 @@ export default class Page1 extends View {
       return false;
     }
   }
-  
+
   inputRecommendedCountry() {
     const countries = document.querySelector(".countries");
     const inputCountry = document.querySelector(".search__field");
-    let onchangeEvent = new Event('change');
+    let onchangeEvent = new Event("change");
     countries.onclick = function (e) {
       e.preventDefault();
 
@@ -105,9 +110,6 @@ export default class Page1 extends View {
           inputCountry.dispatchEvent(onchangeEvent);
           break;
       }
-      
-      
     };
   }
-  
 }

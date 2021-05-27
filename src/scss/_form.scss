@@ -6,7 +6,7 @@
 #form {
   @include flex-row;
   width: 1200px;
-  background-color: $secondBackground;
+  background-color: $thirdBackground;
   padding: 3rem 0;
   font-size: 1rem;
   margin: auto;
@@ -160,6 +160,7 @@
     @include centered-object;
     padding-top: 1.5rem;
     width: 100%;
+    background-color: $thirdBackground;
   }
 }
 
