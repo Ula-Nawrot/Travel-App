@@ -12,7 +12,7 @@ export default class Page2 extends View {
     this.inputDates();
     this.arrowBack();
     this.showHotels(dataHotel);
-    this.updatePriceOfHotel(dataHotel);
+    //this.updatePriceOfHotel(dataHotel);
   }
   insertData() {
     const inputCountry = document.querySelectorAll(".search__field");
@@ -27,7 +27,6 @@ export default class Page2 extends View {
 
     inputDateFrom.disabled = true;
     inputDateTo.disabled = true;
-
   }
   showHotels(dataHotel) {
     const hotelContainer = document.querySelector(".hotels");
@@ -39,22 +38,24 @@ export default class Page2 extends View {
     const days = View.prototype.diffBetweenDates(userData);
     const facilities = Object.values(dataHotel.facilities);
 
-    function hotelStars(dataHotel){
-      if(dataHotel.stars==3){
-        return 'star3.jpg'
+    function hotelStars(dataHotel) {
+      if (dataHotel.stars == 3) {
+        return "star3.jpg";
       }
-      if(dataHotel.stars==4){
-        return 'star4.jpg'
+      if (dataHotel.stars == 4) {
+        return "star4.jpg";
       }
-      if(dataHotel.stars==5){
-        return 'star5.jpg'
+      if (dataHotel.stars == 5) {
+        return "star5.jpg";
       }
     }
     return `<div class="city">
     <img src="${dataHotel.photos[0].base64}" />
       <div class="hotel">
         <p class="hotel_name">${dataHotel.name} </p>
-        <img src="./images/${hotelStars(dataHotel)}" alt="one star" class="stars"/>
+        <img src="./images/${hotelStars(
+          dataHotel
+        )}" alt="one star" class="stars"/>
         <ul>
           ${facilities
             .map((facility) => {
@@ -65,32 +66,29 @@ export default class Page2 extends View {
       </div>
       <div class="booking">
           <div class="price">${dataHotel.price * userData.noOfPeople * days} ${
-            dataHotel.currency}</div>
+      dataHotel.currency}</div>
           <button class="btn book">Book</button>
       </div>
     </div>`;
   }
-  
-  updatePriceOfHotel(dataHotel) {
-    userData;
-    const containerPage2 = document.getElementById("choosingHotel");
-    const inputDateFrom = document.getElementById("from2");
-    const inputDateTo = document.getElementById("to2");
-    const priceContainer = containerPage2.querySelectorAll(".price");
 
-    containerPage2.onchange = () => {
-      const days = View.prototype.diffBetweenDates(userData);
-      console.log("number of days:" + days);
-      userData.dateFrom = inputDateFrom.value;
-      console.log(userData.dateFrom);
-      userData.dateTo = inputDateTo.value;
-      console.log(userData.dateTo);
-      priceContainer.forEach((el) => {
-        el.innerHTML = `${dataHotel.price * userData.noOfPeople * days} ${
-          dataHotel.currency
-        } /night`;
-        console.log(el.innerHTML);
-      });
-    };
-  }
+  // updatePriceOfHotel(dataHotel) {
+  //   userData;
+  //   const containerPage2 = document.getElementById("choosingHotel");
+  //   const inputDateFrom = document.getElementById("from2");
+  //   const inputDateTo = document.getElementById("to2");
+  //   const priceContainer = containerPage2.querySelectorAll(".price");
+
+  //   containerPage2.onchange = () => {
+  //     const days = View.prototype.diffBetweenDates(userData);
+
+  //     userData.dateFrom = inputDateFrom.value;
+  //     userData.dateTo = inputDateTo.value;
+
+  //     priceContainer.forEach((el) => {
+  //       el.innerHTML = `${dataHotel.price * userData.noOfPeople * days} ${
+  //         dataHotel.currency}`;
+  //     });
+  //   };
+  // }
 }

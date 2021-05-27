@@ -88,8 +88,8 @@ async function feelingForm(country) {
 
     confirmButton.onclick = (e) => {
       e.preventDefault();
-      const index = confirmButton.getAttribute("data-index");
-      const totalPrice = page3.priceCalc(dataHotel[index], userData);
+      //const index = confirmButton.getAttribute("data-index");
+      //page3.priceCalc(dataHotel[index], userData);
 
       confirmation.renderFunctions();
 
