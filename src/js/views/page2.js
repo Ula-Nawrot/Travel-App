@@ -25,6 +25,9 @@ export default class Page2 extends View {
     inputDateFrom.value = `${userData.dateFrom}`;
     inputDateTo.value = `${userData.dateTo}`;
     inputPeople.value = `${userData.noOfPeople}`;
+    inputDateFrom.disabled = true;
+    inputDateTo.disabled = true;
+
   }
   showHotels(dataHotel) {
     const hotelContainer = document.querySelector(".hotels");

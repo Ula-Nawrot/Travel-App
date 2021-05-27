@@ -33,15 +33,7 @@ export default class Page1 extends View {
       return true;
     }
   }
-  validationPeople() {
-    const numberOfPeople = document.getElementById("people");
-    if (numberOfPeople.value == "") {
-      alert("Please select number of people you want to go with");
-      return false;
-    } else {
-      return true;
-    }
-  }
+  
   inputCountryName() {
     const inputCountry = document.querySelector(".search__field");
     const inputDateFrom = document.querySelector(".search__date_from");

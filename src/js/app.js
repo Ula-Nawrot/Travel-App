@@ -68,7 +68,7 @@ async function chooseCountry(country) {
     searchButton.onclick = (e) => {
       e.preventDefault();
 
-      if (page1.inputCountryName() && page1.validationDates()&&page1.validationPeople()) {
+      if (page1.inputCountryName() && page1.validationDates()) {
         choosingHotel.classList.remove("hidden");
         choosingCountry.classList.add("hidden");
         page2.renderFunctions(dataHotel);

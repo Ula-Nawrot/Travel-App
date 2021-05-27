@@ -77,7 +77,7 @@ export default class View {
           inputCountry.value = "";
           inputDateFrom.value = "";
           inputDateTo.value = "";
-          inputPeople.value = "";
+          inputPeople.value = "1";
           hotelContainer.innerHTML = "";
         }
         if (i === 1) {
