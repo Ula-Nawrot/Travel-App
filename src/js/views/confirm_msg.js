@@ -76,7 +76,7 @@ export default class Confirm_Msg extends View {
   }
   showConfirmation(dataHotel) {
     const confirm_msg = document.getElementById("confirm_msg");
-    const modalWindow = document.getElementById('modal')
+    const modalWindow = document.getElementById("modal");
     const overlay = document.querySelector(".overlay");
     confirm_msg.classList.remove("hidden");
     overlay.classList.remove("hidden");

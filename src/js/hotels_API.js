@@ -11,5 +11,3 @@ export const hotelsAPI = async function (country) {
     alert(err);
   }
 };
-
-

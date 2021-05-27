@@ -1,29 +1,29 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
-const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
-  entry: './src/js/app.js',
+  entry: "./src/js/app.js",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "./dist"),
   },
   watch: false,
-  mode: 'development',
-  devtool: 'source-map',
+  mode: "development",
+  devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.css$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          "css-loader",
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: [['autoprefixer']],
+                plugins: [["autoprefixer"]],
               },
             },
           },
@@ -33,18 +33,18 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          "css-loader",
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             options: {
-              implementation: require('sass'), // Prefer `dart-sass`
+              implementation: require("sass"), // Prefer `dart-sass`
             },
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: [['autoprefixer']],
+                plugins: [["autoprefixer"]],
               },
             },
           },
@@ -54,10 +54,10 @@ module.exports = {
         test: /\.(png|jpe?g|gif|webp|awif|svg)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              context: 'src',
-              name: '[path]/[name].[ext]',
+              context: "src",
+              name: "[path]/[name].[ext]",
             },
           },
         ],
@@ -66,8 +66,8 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: { presets: ['@babel/preset-env'] },
+          loader: "babel-loader",
+          options: { presets: ["@babel/preset-env"] },
         },
       },
     ],
@@ -75,9 +75,9 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      title: 'My App',
-      filename: 'index.html',
-      template: 'src/index.html',
+      title: "My App",
+      filename: "index.html",
+      template: "src/index.html",
     }),
   ],
 };

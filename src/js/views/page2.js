@@ -66,7 +66,8 @@ export default class Page2 extends View {
       </div>
       <div class="booking">
           <div class="price">${dataHotel.price * userData.noOfPeople * days} ${
-      dataHotel.currency}</div>
+      dataHotel.currency
+    }</div>
           <button class="btn book">Book</button>
       </div>
     </div>`;
