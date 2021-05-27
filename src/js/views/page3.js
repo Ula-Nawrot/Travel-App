@@ -6,13 +6,9 @@ let price = null;
 export default class Page3 extends View {
   constructor() {
     super();
-    
   }
-  
-  bookButton(data, userData) {
-    this.data = data;
-    
-    //Przypisz eventListener do buttona
+
+  bookButton(dataHotel, userData) {
     const formPage = document.getElementById("feelingForm");
     const bookButtons = document.querySelectorAll(".book");
     const choosingHotel = document.getElementById("choosingHotel");
@@ -21,18 +17,17 @@ export default class Page3 extends View {
       bookButtons[i].onclick = () => {
         formPage.classList.remove("hidden");
         choosingHotel.classList.add("hidden");
-        
-        
-        this.feelingForm(this.data[i], userData, i);
-        this.additionalOptions(this.data[i]);
-        this.priceCalc(this.data[i], userData);
+
+        this.feelingForm(dataHotel[i], userData, i);
+        this.additionalOptions(dataHotel[i]);
+        this.priceCalc(dataHotel[i], userData);
         this.arrowBack();
-        this.loadMap(this.data[i]);
-        this.saveInLocalStorage(this.data[i],i);
+        this.loadMap(dataHotel[i]);
+        this.saveInLocalStorage(dataHotel[i], i);
       };
     }
   }
-  feelingForm(dataHotel, userData,i) {
+  feelingForm(dataHotel, userData, i) {
     const hotelName = document.getElementById("form_hotel_name");
     const hotelCountry = document.getElementById("form_hotel_country");
     const hotelCity = document.getElementById("form_hotel_city");
@@ -41,20 +36,19 @@ export default class Page3 extends View {
     const selectedDateFrom = this.changeDate(userData.dateFrom);
     const selectedDateTo = this.changeDate(userData.dateTo);
     const noOfPeople = document.getElementById("form_people");
-    const hotelImage = document.getElementById('hotel_image');
+    const hotelImage = document.getElementById("hotel_image");
 
     const confirmButton = document.getElementById("confirm");
-    confirmButton.setAttribute('data-index', i)
+    confirmButton.setAttribute("data-index", i);
 
     hotelName.textContent = dataHotel.name;
     hotelCountry.textContent = userData.country;
     hotelCity.textContent = dataHotel.location.city;
-    hotelImage.setAttribute('src',dataHotel.photos[0].base64);
+    hotelImage.setAttribute("src", dataHotel.photos[0].base64);
     dateFrom.textContent = `${selectedDateFrom[0]}/${selectedDateFrom[1]}/${selectedDateFrom[2]}`;
     dateTo.textContent = `${selectedDateTo[0]}/${selectedDateTo[1]}/${selectedDateTo[2]}`;
 
     noOfPeople.textContent = userData.noOfPeople;
-   
   }
   additionalOptions(datahotel) {
     const breakfast = document.getElementById("breakfast");
@@ -67,33 +61,26 @@ export default class Page3 extends View {
   }
   priceCalc(datahotel, dataUser) {
     const showPrice = document.getElementById("totalAmount");
-    const dateFrom = document.getElementById("form_data_from");
-    const dateTo = document.getElementById("form_data_to");
-    
-
     const dayAmount = this.diffBetweenDates(dataUser);
     const pricePerNight = datahotel.price;
     const currency = datahotel.currency;
     const people = dataUser.noOfPeople;
-    let totalAmount = pricePerNight * dayAmount * people; // +optionPrice;
+    let totalAmount = pricePerNight * dayAmount * people;
 
     showPrice.textContent = `Total Price: ${totalAmount} ${currency}`;
     showPrice.setAttribute("value", `${totalAmount}`);
-    
-    /////////////////////////////////////////////////////
+
+    //additional option added on click
     const el = document.querySelector(".options");
     const products = el.getElementsByTagName("input");
     const lenght = products.length;
     for (let i = 0; i < lenght; i++) {
       if (products[i].type === "checkbox") {
         products[i].onclick = updateCost;
-        
-        
       }
     }
-    
-    ///////////////////////////////////////////////////////////
 
+    //function to update cost after clicking on additional options
     function updateCost(e) {
       if (this.checked) {
         if (this.id == "checkboxTaxi") {
@@ -122,9 +109,9 @@ export default class Page3 extends View {
       }
     }
   }
-  loadMap(data) {
-    const latitude = data.location.latitude;
-    const longitude = data.location.longitude;
+  loadMap(dataHotel) {
+    const latitude = dataHotel.location.latitude;
+    const longitude = dataHotel.location.longitude;
     const map = L.map("map").setView([latitude, longitude], 10);
 
     L.tileLayer(
@@ -143,7 +130,7 @@ export default class Page3 extends View {
 
     L.marker([latitude, longitude])
       .addTo(map)
-      .bindPopup(data.name)
+      .bindPopup(dataHotel.name)
       .openPopup();
   }
   saveInLocalStorage(data, i) {
@@ -156,11 +143,10 @@ export default class Page3 extends View {
       const surname = document.getElementById("surname");
       const email = document.getElementById("email");
       const hotelName = data.name;
-      const mobilePayment = document.getElementById('mobile_payment');
-      const bankTransfer = document.getElementById('bank_transfer');
-      const creditCard = document.getElementById('credit_card')
+      const mobilePayment = document.getElementById("mobile_payment");
+      const bankTransfer = document.getElementById("bank_transfer");
+      const creditCard = document.getElementById("credit_card");
 
-      
       const formDataToSave = {
         breakfast: breakfast.checked,
         taxi: taxi.checked,
@@ -172,25 +158,9 @@ export default class Page3 extends View {
         mobilePayment: mobilePayment.checked,
         bankTransfer: bankTransfer.checked,
         creditCard: creditCard.checked,
-        hotelIndex: i
+        hotelIndex: i,
       };
       localStorage.setItem("formDataToSave", JSON.stringify(formDataToSave));
     };
-    
-  }
-  retrieveDataFromLocalStorage() {
-    //pobranie danych z local Storage po reload of the page
-    const retrievedData = JSON.parse(localStorage.getItem("formDataToSave"));
-    const breakfast = document.getElementById("checkboxBreakfast");
-    const taxi = document.getElementById("checkboxTaxi");
-    const parking = document.getElementById("checkboxParking");
-    const surname = document.getElementById("surname");
-    const email = document.getElementById("email");
-
-    breakfast.checked = retrievedData.breakfast;
-    taxi.checked = retrievedData.taxi;
-    parking.checked = retrievedData.parking;
-    surname.value = retrievedData.surname;
-    email.value = retrievedData.email;
   }
 }
