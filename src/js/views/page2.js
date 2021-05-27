@@ -36,7 +36,7 @@ export default class Page2 extends View {
   }
   generateMarkupHotel(dataHotel) {
     userData;
-    const days = View.prototype.diffBetweenDates3(userData);
+    const days = View.prototype.diffBetweenDates(userData);
     const facilities = Object.values(dataHotel.facilities);
 
     function hotelStars(dataHotel){
@@ -79,7 +79,7 @@ export default class Page2 extends View {
     const priceContainer = containerPage2.querySelectorAll(".price");
 
     containerPage2.onchange = () => {
-      const days = View.prototype.diffBetweenDates3(userData);
+      const days = View.prototype.diffBetweenDates(userData);
       console.log("number of days:" + days);
       userData.dateFrom = inputDateFrom.value;
       console.log(userData.dateFrom);

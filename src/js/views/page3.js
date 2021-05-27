@@ -71,7 +71,7 @@ export default class Page3 extends View {
     const dateTo = document.getElementById("form_data_to");
     
 
-    const dayAmount = this.diffBetweenDates3(dataUser);
+    const dayAmount = this.diffBetweenDates(dataUser);
     const pricePerNight = datahotel.price;
     const currency = datahotel.currency;
     const people = dataUser.noOfPeople;

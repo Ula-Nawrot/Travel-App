@@ -1,22 +1,5 @@
-const mainContainer = document.querySelector(".container");
-const inputDateFrom = document.querySelector(".search__date_from");
-const inputDateTo = document.querySelector(".search__date_to");
-const arrowBackPage2 = document.querySelector(".arrow");
-
 export default class View {
-  constructor() {
-    this.errorMessage =
-      "We could not find that recipe. Please try another one!";
-    this.dataFrom;
-    this.dataTo;
-
-    //console.log(this.data.Poland);
-  }
-
-  inputCountry() {
-    const inputCountry = document.querySelector(".search__field");
-    return inputCountry.value;
-  }
+  constructor() {}
 
   inputDates() {
     const inputDateFrom = document.querySelectorAll(".search__date_from");
@@ -38,16 +21,8 @@ export default class View {
             Number(dayFrom[0]) + 1
           }`;
           element2.setAttribute("min", `${dayPlusOne}`);
-          console.log("wartość DataTo:" + typeof element2.value);
-          // if (element1.value >= element2.value && element2 != "") {
-          //   alert("Data From is larger that data To");
-          // }
-          console.log(dayPlusOne);
         });
       };
-      // element1.addEventListener("change", function () {
-
-      // });
     });
   }
   changeDate(date) {
@@ -88,11 +63,7 @@ export default class View {
     );
   }
 
-  variableAssignment() {
-    this.inputCountry = document.querySelector(".search__field");
-  }
-
-  diffBetweenDates() {
+  diffBetweenDatesOnChange() {
     const inputDateFrom = document.querySelector(".search__date_from");
     const inputDateTo = document.querySelector(".search__date_to");
 
@@ -109,9 +80,9 @@ export default class View {
       return differenceInDays;
     });
   }
-  diffBetweenDates3(data) {
-    const from = data.dateFrom;
-    const to = data.dateTo;
+  diffBetweenDates(dataHotel) {
+    const from = dataHotel.dateFrom;
+    const to = dataHotel.dateTo;
 
     const date1 = new Date(from);
     const date2 = new Date(to);
@@ -120,11 +91,5 @@ export default class View {
 
     const differenceInDays = differenceInTime / (1000 * 3600 * 24);
     return differenceInDays;
-  }
-  convertImage(dataHotel) {
-    const image = new Image();
-    image.src = dataHotel.photos[0];
-    return image.src;
-    //document.body.appendChild(image);
   }
 }

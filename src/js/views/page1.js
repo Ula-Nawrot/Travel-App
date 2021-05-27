@@ -8,7 +8,7 @@ export default class Page1 extends View {
   renderFunctions() {
     this.inputRecommendedCountry();
     this.inputDates();
-    this.diffBetweenDates();
+    this.diffBetweenDatesOnChange();
   }
 
   validationDates() {

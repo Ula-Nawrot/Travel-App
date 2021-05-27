@@ -140,7 +140,6 @@ export default class Confirm_Msg extends View {
   }
   generateMarkupHotel(dataHotel) {
     const retrievedData = JSON.parse(localStorage.getItem("formDataToSave"));
-    //const days = View.prototype.diffBetweenDates3(userData);
     const index = retrievedData.hotelIndex;
     let paymentMathod = "";
     if (retrievedData.mobilePayment) {

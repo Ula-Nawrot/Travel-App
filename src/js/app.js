@@ -56,7 +56,8 @@ localStorage.clear();
 page1.renderFunctions();
 
 inputCountry.onchange = (e) => {
-  country = view.inputCountry();
+  const inputCountry = document.querySelector(".search__field");
+  country = inputCountry.value;
   feelingForm(country);
   chooseCountry(country);
 };
