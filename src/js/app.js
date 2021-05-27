@@ -1,7 +1,8 @@
 import { hotelsAPI } from "./hotels_API.js";
 import { userData } from "./views/page1";
-import Page2 from "./views/page2";
+import View from "./views/View.js";
 import Page1 from "./views/page1.js";
+import Page2 from "./views/page2";
 import Page3 from "./views/page3.js";
 import Confirm_Msg from "./views/confirm_msg.js";
 import "core-js/stable";
@@ -25,30 +26,16 @@ import "../images/star3.jpg";
 import "../images/star4.jpg";
 import "../images/star5.jpg";
 
-import View from "./views/View.js";
-
-// function importAll(r) {
-//     return r.keys().map(r);
-//   }
-
-//   const images = importAll(require.context('./', false, /\.(png|jpe?g|svg)$/));
-//https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack
-
-///////////////Selecting DOM elements/////////////////////
-
 const searchButton = document.querySelector(".search__btn");
 const confirmButton = document.getElementById("confirm");
-
 const choosingHotel = document.getElementById("choosingHotel");
 const choosingCountry = document.getElementById("choosingCountry");
 const inputCountry = document.querySelector(".search__field");
-const form = document.getElementById("form");
-const imagesCountries = document.querySelector(".countries");
 
 const page1 = new Page1();
 const page2 = new Page2();
 const page3 = new Page3();
-const view = new View();
+//const view = new View();
 const confirmation = new Confirm_Msg();
 let country = {};
 
@@ -65,7 +52,7 @@ inputCountry.onchange = (e) => {
 async function chooseCountry(country) {
   try {
     const dataHotel = await hotelsAPI(country);
-    console.log(dataHotel);
+
     searchButton.onclick = (e) => {
       e.preventDefault();
 
@@ -85,12 +72,8 @@ async function feelingForm(country) {
   try {
     const dataHotel = await hotelsAPI(country);
     
-
     confirmButton.onclick = (e) => {
       e.preventDefault();
-      //const index = confirmButton.getAttribute("data-index");
-      //page3.priceCalc(dataHotel[index], userData);
-
       confirmation.renderFunctions();
 
       if (
@@ -98,7 +81,6 @@ async function feelingForm(country) {
         confirmation.ValidateSurname() == true &&
         confirmation.ValidatePayment() == true
       ) {
-        console.log("email i nazwisko jest poprawny");
         confirmation.showConfirmation(dataHotel);
       }
     };

@@ -7,8 +7,6 @@ export const hotelsAPI = async function (country) {
     const data = await res.json();
 
     return data[country];
-    //return data[country];
-    if (!res.ok) throw new Error(`${data.message}`);
   } catch (err) {
     alert(err);
   }
