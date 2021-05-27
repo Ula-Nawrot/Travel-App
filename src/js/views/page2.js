@@ -1,6 +1,5 @@
 import View from "./View";
 import { userData } from "./page1.js";
-
 import { doc } from "prettier";
 import { data } from "autoprefixer";
 
@@ -25,6 +24,7 @@ export default class Page2 extends View {
     inputDateFrom.value = `${userData.dateFrom}`;
     inputDateTo.value = `${userData.dateTo}`;
     inputPeople.value = `${userData.noOfPeople}`;
+
     inputDateFrom.disabled = true;
     inputDateTo.disabled = true;
 
