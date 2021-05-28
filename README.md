@@ -46,7 +46,13 @@ _the minimum conditions the solution must meet for the end user to accept the so
 
 ![Use Case](https://github.com/Ula-Nawrot/Travel-App/blob/f9cac262692926d899ee29780c6aa48f5221c88c/images%20for%20ReadMe/UseCases.JPG)
 
+### Mockups
 
+I desiged the app in AdobeXD
+![Page1](https://github.com/Ula-Nawrot/Travel-App/blob/8f2ea15a985abbb897d9ca9a60dfd42ae55194dd/images%20for%20ReadMe/Mockup/Main%20page.jpg)
+![Page2](https://github.com/Ula-Nawrot/Travel-App/blob/8f2ea15a985abbb897d9ca9a60dfd42ae55194dd/images%20for%20ReadMe/Mockup/Page%202.jpg)
+![Page3](https://github.com/Ula-Nawrot/Travel-App/blob/8f2ea15a985abbb897d9ca9a60dfd42ae55194dd/images%20for%20ReadMe/Mockup/Page%203.jpg)
+![Page4](https://github.com/Ula-Nawrot/Travel-App/blob/8f2ea15a985abbb897d9ca9a60dfd42ae55194dd/images%20for%20ReadMe/Mockup/Page%204.jpg)
 
 ## Resources
 * To create this project, I used the knowledge I gained during studies at the Wrocław School of Banking, specialization: Front-end developer.
