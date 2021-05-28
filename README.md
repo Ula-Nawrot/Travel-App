@@ -59,9 +59,9 @@ I desiged the app in AdobeXD
 ![Page4](https://github.com/Ula-Nawrot/Travel-App/blob/8f2ea15a985abbb897d9ca9a60dfd42ae55194dd/images%20for%20ReadMe/Mockup/Page%204.jpg)
 
 ## Future improvment
-1. I would program the ability to change the departure and arrival dates with immediate price conversion and the ability to change the number of people → 
- - I have already started changing the code in the inputDates method in the View class to handle fields on two pages, this is what I used the forEach method to do. 
- - The function I started to change the date on the second page is called "updatePriceOfHotel". It is commented out and not deleted in case I want to finish this idea.
+1. I would program the ability to change the departure and arrival dates with immediate price conversion and the ability to change the number of people.
+     - I have already started changing the code in the inputDates method in the View class to handle fields on two pages, this is what I used the forEach method to do. 
+     - The function I started to change the date on the second page is called "updatePriceOfHotel". It is commented out and not deleted in case I want to finish this idea.
 
 Translated with www.DeepL.com/Translator (free version)
 
