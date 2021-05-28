@@ -1,9 +1,9 @@
-# Travel-Website - allows to book hotels in Europe
+# Travel Website
 ## Motivation
 This is a project for postgraduate studies at Wroclaw School of Banking. The main language I used in Java Script. It is one of the most
 [popular scripting languages](https://insights.stackoverflow.com/survey/2020#technology-programming-scripting-and-markup-languages) which influenced my motivation to explore its secrets. The fact that with JS you can write both frontend and backend applications is its additional advantage.
 ## Description
-
+The Travel Website allows to book hotels in different cities in Europe in chosen time range
 ### User story description
 _the feature/function to be developed from a user perspective_
 
@@ -11,7 +11,8 @@ As a user, I would like to have list of hotels in a chosen place, so I can book 
 
 ### Persona
 
-You can find persona in gitHub repository in folder images for ReadME
+![Persona](https://github.com/Ula-Nawrot/Travel-App/blob/3cc2ea900b3734e35ccce53975ed0a1a1e8be853/images%20for%20ReadMe/Persona.jpg)
+
 
 ### Acceptance Criteria 
 _the minimum conditions the solution must meet for the end user to accept the solution_
