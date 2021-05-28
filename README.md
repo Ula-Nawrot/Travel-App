@@ -7,7 +7,7 @@ You have to open this link: [Travel Website](https://ula-nawrot.github.io/Travel
 
 **!!!Important!!!**
 
-The API for hotels is hosted on Heroku, which after 30 minutes of inactivity (no requests to the API) puts the Web Service to sleep, which in the case of Heroku requests wakes it up, which can take several seconds.  So in case of alert with message *"TypeError: Failed to fetch", try again in a few seconds.*
+The API for hotels is hosted on Heroku, which after 30 minutes of inactivity (no requests to the API) puts the Web Service to sleep, which in the case of Heroku requests wakes it up, which can take several seconds.  So in case of alert with message **"TypeError: Failed to fetch", try again in a few seconds.**
 ## Description
 The Travel Website allows to book hotels in different cities in Europe in chosen time range
 ### User story description
