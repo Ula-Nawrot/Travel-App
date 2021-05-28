@@ -4,6 +4,26 @@ This is a project for postgraduate studies at Wroclaw School of Banking. The mai
 [popular scripting languages](https://insights.stackoverflow.com/survey/2020#technology-programming-scripting-and-markup-languages) which influenced my motivation to explore its secrets. The fact that with JS you can write both frontend and backend applications is its additional advantage.
 ## Description
 
+### User story description
+the feature/function to be developed from a user perspective
+
+As a user, I would like to have list of hotels in a chosen place, so I can book a hotel.
+
+### Acceptance Criteria 
+the minimum conditions the solution must meet for the end user to accept the solution
+
+- Enable user to choose a place
+- Enable user to choose a date from-to
+- Display a list of hotels in a chosen place
+- Enable user to chosen a certain hotel
+- Enable user to fill a form
+- Enable user to add additional options
+- Enable user to submit form
+
+### Persona
+
+You can find persona in gitHub repository in folder images for ReadME
+
 
 ## How to open it
 You have to open this link: [Travel Website](https://ula-nawrot.github.io/Travel-App/)
