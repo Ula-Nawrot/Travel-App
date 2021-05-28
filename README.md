@@ -5,12 +5,16 @@ This is a project for postgraduate studies at Wroclaw School of Banking. The mai
 ## Description
 
 ### User story description
-the feature/function to be developed from a user perspective
+_the feature/function to be developed from a user perspective_
 
 As a user, I would like to have list of hotels in a chosen place, so I can book a hotel.
 
+### Persona
+
+You can find persona in gitHub repository in folder images for ReadME
+
 ### Acceptance Criteria 
-the minimum conditions the solution must meet for the end user to accept the solution
+_the minimum conditions the solution must meet for the end user to accept the solution_
 
 - Enable user to choose a place
 - Enable user to choose a date from-to
@@ -20,10 +24,22 @@ the minimum conditions the solution must meet for the end user to accept the sol
 - Enable user to add additional options
 - Enable user to submit form
 
-### Persona
+### Process Flow
+- Open the website
+- Navigate to the serach bar
+- Search for a place the user would like to go
+- Choose a date when he want to travel
+- Accepte a chosen data
+- Select a hotel
+- Fill a form
+- Add additional options
+- Submit a form
+- Display a summary
 
-You can find persona in gitHub repository in folder images for ReadME
 
+### Use Case
+
+![Use Case](Travel-App/images for ReadMe/Persona.jpg?raw=true "Title")
 
 ## How to open it
 You have to open this link: [Travel Website](https://ula-nawrot.github.io/Travel-App/)
