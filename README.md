@@ -39,7 +39,8 @@ _the minimum conditions the solution must meet for the end user to accept the so
 
 ### Use Case
 
-![Use Case](Travel-App/images for ReadMe/Persona.jpg?raw=true "Title")
+![Use Case](https://github.com/Ula-Nawrot/Travel-App/blob/f9cac262692926d899ee29780c6aa48f5221c88c/images%20for%20ReadMe/UseCases.JPG)
+
 
 ## How to open it
 You have to open this link: [Travel Website](https://ula-nawrot.github.io/Travel-App/)
