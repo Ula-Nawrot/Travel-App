@@ -1,8 +1,7 @@
-// #page3 {
-//   //@include centered-object;
-//   //margin-left: 200px;
-//   width: 100vw;
-// }
+#feelingForm {
+  width: 100vw;
+  height: 100vh;
+}
 #form {
   @include flex-row;
   width: 1200px;
