@@ -49,9 +49,13 @@ _the minimum conditions the solution must meet for the end user to accept the so
 ### Mockups
 
 I desiged the app in AdobeXD
+
 ![Page1](https://github.com/Ula-Nawrot/Travel-App/blob/8f2ea15a985abbb897d9ca9a60dfd42ae55194dd/images%20for%20ReadMe/Mockup/Main%20page.jpg)
+
 ![Page2](https://github.com/Ula-Nawrot/Travel-App/blob/8f2ea15a985abbb897d9ca9a60dfd42ae55194dd/images%20for%20ReadMe/Mockup/Page%202.jpg)
+
 ![Page3](https://github.com/Ula-Nawrot/Travel-App/blob/8f2ea15a985abbb897d9ca9a60dfd42ae55194dd/images%20for%20ReadMe/Mockup/Page%203.jpg)
+
 ![Page4](https://github.com/Ula-Nawrot/Travel-App/blob/8f2ea15a985abbb897d9ca9a60dfd42ae55194dd/images%20for%20ReadMe/Mockup/Page%204.jpg)
 
 ## Resources
