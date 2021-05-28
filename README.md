@@ -62,8 +62,9 @@ I desiged the app in AdobeXD
 1. I would program the ability to change the departure and arrival dates with immediate price conversion and the ability to change the number of people.
      - I have already started changing the code in the inputDates method in the View class to handle fields on two pages, this is what I used the forEach method to do. 
      - The function I started to change the date on the second page is called "updatePriceOfHotel". It is commented out and not deleted in case I want to finish this idea.
+2. Zaprogramowałam że jeśli użytkownik wybierze date rozpoczęcia wyjazdu to date powrotu może wybrać dopiero od następnego dnia danego miesiąca. Nie działa to jednak jeśli użytkownik wybierze date na przełomie dwóch miesięcy. Do pracy z datami użyłabym w przyszłości biblioteki moment.js.
 
-Translated with www.DeepL.com/Translator (free version)
+
 
 ## Resources
 * To create this project, I used the knowledge I gained during studies at the Wrocław School of Banking, specialization: Front-end developer.
