@@ -1,6 +1,7 @@
 # Travel-Website - allows to book hotels in Europe
 ## Motivation
-This is a project for postgraduate studies at Wroclaw School of Banking. The main language I used in Java Script. It is one of the most [popular scripting languages] (https://insights.stackoverflow.com/survey/2020#technology-programming-scripting-and-markup-languages) which influenced my motivation to explore its secrets. The fact that with JS you can write both frontend and backend applications is its additional advantage.
+This is a project for postgraduate studies at Wroclaw School of Banking. The main language I used in Java Script. It is one of the most
+[popular scripting languages](https://insights.stackoverflow.com/survey/2020#technology-programming-scripting-and-markup-languages) which influenced my motivation to explore its secrets. The fact that with JS you can write both frontend and backend applications is its additional advantage.
 ## Description
 
 
